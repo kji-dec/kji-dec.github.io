@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Pytorch Tutorial (1)
-subheading: Training a Classifier
+subtitle: Training a Classifier
 categories: Pytorch
 tags: Pytorch CV
 sidebar: []

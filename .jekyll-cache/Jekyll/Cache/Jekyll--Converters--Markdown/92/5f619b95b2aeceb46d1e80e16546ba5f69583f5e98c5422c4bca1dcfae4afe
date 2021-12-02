@@ -1,0 +1,51 @@
+I"<p><a href="https://www.youtube.com/watch?v=AdYRASHRKwE&amp;list=PLQt_pzi-LLfpcRFhWMywTePfZ2aPapvyl">강의 - 완전 초보용 플러터 강좌</a></p>
+
+<h3 id="class-and-widget">Class and Widget</h3>
+
+<ul>
+  <li>Class: 속성 및 기능에 대한 정의</li>
+  <li>객체: class가 정의된 후 메모리 상에 할당된 것</li>
+  <li>인스턴스: class의 속성과 기능을 똑같이 가지고 있고 프로그래밍 상에서 사용되는 대상</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Person</span><span class="o">{</span> <span class="c1">//class</span>
+  <span class="kt">String</span> <span class="n">name</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+  <span class="kt">String</span> <span class="n">sex</span><span class="o">;</span>   <span class="c1">//멤버 변수들</span>
+  
+  <span class="c1">//생성자의 인자값에 중괄호 -&gt; argument가 optional이라는 의미</span>
+  <span class="n">Person</span><span class="o">({</span><span class="kt">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">String</span> <span class="n">sex</span><span class="o">}){</span> <span class="c1">//생성자</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// int addNumber(int n1, int n2){  //function</span>
+<span class="c1">//   return n1 + n2;</span>
+<span class="c1">// }</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="o">){</span>
+  <span class="n">Person</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="nl">age:</span> <span class="mi">30</span><span class="o">);</span>
+  <span class="n">Person</span> <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">p1</span><span class="o">.</span><span class="na">age</span><span class="o">);</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">p2</span><span class="o">.</span><span class="na">age</span><span class="o">);</span>
+<span class="c1">//   print(addNumber(3, 4));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>dart는 type 추론 기능이 있어서 굳이 함수 return 형식 혹은 변수 type을 지정해주지 않아도 문법적으로 오류는 없음 → 그래도 정확히 원하는 결과가 나오게 하기 위해서는 지정해주는 것이 좋음!</li>
+  <li>위젯이 클래스라고 봐도 되지만 인스턴스라고 볼 수도 있음</li>
+</ul>
+
+<h3 id="appbar-icon-buttons">AppBar icon buttons</h3>
+
+<ol>
+  <li>leading: 아이콘 버튼이나 간단한 위젯을 왼쪽에 배치</li>
+  <li>actions: 복수의 아이콘 버튼 등을 오른쪽에 배치</li>
+  <li>onPressed: 함수의 형태로 일반 버튼이나 아이콘 버튼을 터치했을 때 일어나는 이벤트 정의</li>
+</ol>
+
+<p>→ 활용은 실습 파일 혹은 [Week2] 말머리의 커밋 히스토리 참고</p>
+:ET

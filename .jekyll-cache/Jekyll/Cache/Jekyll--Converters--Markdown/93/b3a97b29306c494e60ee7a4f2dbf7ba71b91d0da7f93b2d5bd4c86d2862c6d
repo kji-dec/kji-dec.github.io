@@ -1,0 +1,34 @@
+I"�<p><a href="https://www.youtube.com/watch?v=AdYRASHRKwE&amp;list=PLQt_pzi-LLfpcRFhWMywTePfZ2aPapvyl">강의 - 완전 초보용 플러터 강좌</a></p>
+
+<h3 id="drawer-menu">Drawer menu</h3>
+
+<p>[실습구조]</p>
+
+<ul>
+  <li>Drawer → ListView
+    <ul>
+      <li>→ UserAccountDrawerHeader</li>
+      <li>→ ListTile</li>
+    </ul>
+  </li>
+  <li>onPressed: 주로 버튼에 사용</li>
+  <li>onTab: 동작에 반응하는 이벤트에 사용</li>
+</ul>
+
+<h3 id="buildcontext">BuildContext</h3>
+
+<ul>
+  <li>widget tree에서 현재 widget의 위치를 알 수 있는 정보
+    <ul>
+      <li>Scaffold Widget에 context를 넣어서 return</li>
+    </ul>
+  </li>
+  <li>이 BuildContext는 stateless 위젯이나 state 빌드 메서드에 의해서 리턴된 위젯의 부모가 됨</li>
+</ul>
+
+<h3 id="scaffoldmessanger">ScaffoldMessanger</h3>
+
+<ul>
+  <li>자손 scaffold를 위해 snackbar를 관리해줌</li>
+</ul>
+:ET

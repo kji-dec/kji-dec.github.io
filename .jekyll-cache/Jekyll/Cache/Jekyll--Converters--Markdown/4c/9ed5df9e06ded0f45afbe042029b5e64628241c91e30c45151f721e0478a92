@@ -1,0 +1,47 @@
+I"�<p><a href="https://youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv">cs231n 강의</a></p>
+
+<p>lec1은 오리엔테이션 수업이라 neural networks와 computer vision 기술의 이론에 대한 직접적인 내용은 크게 없다. 그래서 이 글을 적기까지 고민이 많았다. 뭘 적어야할지 몰라서. 일단, 전체적으로 생물의 시각에 대한 이야기를 조금 언급하고 컴퓨터 비전의 역사를 설명하고 있다.</p>
+
+<p>생물은 simple cells, complex cells, hypercomplex cells와 electronical signal을 이용해 사물을 봄.</p>
+
+<p>BUT, 기계는 인간의 눈처럼 사물을 파악하기가 쉽지 않음.</p>
+
+<p>컴퓨터 비전에 관한 논의</p>
+
+<ul>
+  <li>MIT의 “The Summer Vision Project”가 거의 최초의 컴퓨터비전에 관한 프로젝트</li>
+  <li>David Marr의 Vision - 3 Steps of visual representation
+    <ul>
+      <li>Primal Sketch: Zero crossings, blobs, edges, bars, ends, virtual line, groups, curves, boundaries</li>
+      <li>2½-D Sketch: Local surface orientation and discontinuities in depth and in surface orientation</li>
+      <li>3-D Model Represnetation: 3-D models hierarchically organized in terms of surface and volumetric primitives</li>
+    </ul>
+  </li>
+</ul>
+
+<p>이미지를 표현/인식하는 방식</p>
+
+<ul>
+  <li>“How can we move beyond the simple block world and start recognizing real world object?”
+    <ul>
+      <li>작은 블록들 등의 간단한 기하학적 요소들을 가지고 무언가를 나타낼 수 있음</li>
+    </ul>
+  </li>
+  <li>기울어진 하나의 이미지와 그렇지 않은 이미지를 볼 때, 같은 부분을 이어 기울어진 이미지와 그렇지 않은 이미지가 같다는 것을 확인할 수도 있음 - SIFT(특징기반객체인식알고리즘)</li>
+  <li>Spatial Pyramid Matching</li>
+</ul>
+
+<p>Visual recognition problems related to image classification</p>
+
+<ul>
+  <li>object detection</li>
+  <li>image captioning</li>
+  <li>action classification</li>
+</ul>
+
+<p>90년대와 현재(강의 기준 2017년)의 컴퓨터비전의 차이는 매우 큼.</p>
+
+<p>원인: computation의 차이, data 양의 차이</p>
+
+<p>강의에서 들어준 예시를 보면, 사람들은 어떤 한 이미지를 분석 할 때 해당 이미지에 나온 것들의 행동, 장소 등의 각종 특징들을 파악한다. 그리고 그를 이용해 이미지에 나온 인물들이 어떠한 상황에 처해있는지 등을 알 수 있다. 버락 오바마가 다른 한 인물을 대상으로 장난을 치는 이미지를 이해하기 위해서는 어떤 남자가 장난을 치고 있고, 그 남자가 그냥 남자가 아닌 버락 오바마임을 파악해야 한다. 그리고 주변인들이 웃고 있는 모습을 확인한 후 어떠한 재미난 상황이 있음을 파악하게 된다. 이런 예시를 보여주면서 시각 정보가 많은 정보를 담고 있고, 이런 것들을 분석하는 것에 대해 다루려고 함을 보여주는 것 같았다. (CV의 목표)</p>
+:ET

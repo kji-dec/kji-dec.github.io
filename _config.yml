@@ -206,4 +206,4 @@ plugins:
   - jekyll-paginate
   - jekyll-spaceship
 
-futrue: true
+future: true

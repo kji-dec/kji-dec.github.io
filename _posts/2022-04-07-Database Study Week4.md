@@ -63,7 +63,7 @@ SELECT [column_names] FROM [table_name1] LEFT JOIN [table_name2] ON [table_name1
 
 ![image](https://user-images.githubusercontent.com/71377968/162006829-6ade1442-dccf-424a-81da-8763dd63372c.png)
 
-2번 문제 해결 방안: 어떤 table의 id값을 보이게할 것인지 명시해주면 됨
+앞선 에러 해결 방안: 어떤 table의 id값을 보이게할 것인지 명시해주면 됨
 
 <br>
 

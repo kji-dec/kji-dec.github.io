@@ -1,0 +1,97 @@
+I"q<p><a href="https://www.inflearn.com/course/database-2-mysql-강좌/dashboard">강의 링크</a></p>
+
+<p><br /></p>
+
+<h3 id="관계형-데이터베이스의-필요성">관계형 데이터베이스의 필요성</h3>
+
+<ul>
+  <li>
+    <p>데이터에 중복된 정보가 있는 경우, 해당 데이터베이스에는 개선될 여지가 있는 것임</p>
+
+    <p>→ 중복된 정보가 있는 column을 따로 테이블로 빼서 테이블로 만드는 방식으로 개선 가능</p>
+  </li>
+  <li>
+    <p>관계형 데이터베이스를 사용할 경우, 유지보수가 편리하며 별도의 데이터임에도 이름이 같은 경우 등에 대해 중복 데이터가 아님을 알 수 있음</p>
+  </li>
+  <li>
+    <p>trade off: 직관적으로 데이터를 볼 수 없음</p>
+
+    <ul>
+      <li>MySQL의 경우, 테이블을 합쳐서 볼 수 있음!</li>
+    </ul>
+
+    <p><br /></p>
+
+    <p><br /></p>
+  </li>
+</ul>
+
+<h3 id="join">Join</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">table_name1</span><span class="p">]</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="p">[</span><span class="n">table_name2</span><span class="p">]</span> <span class="k">ON</span> <span class="p">[</span><span class="n">table_name1</span><span class="p">].[</span><span class="n">table_name2_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">table_name2_id</span><span class="p">];]</span>
+</code></pre></div></div>
+
+<p>합치려는 테이블의 id를 기준으로 table을 join</p>
+
+<p><br /></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="p">[</span><span class="n">column_names</span><span class="p">]</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">table_name1</span><span class="p">]</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="p">[</span><span class="n">table_name2</span><span class="p">]</span> <span class="k">ON</span> <span class="p">[</span><span class="n">table_name1</span><span class="p">].[</span><span class="n">table_name2_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">table_name2_id</span><span class="p">];]</span>
+</code></pre></div></div>
+
+<p>표기할 column을 정해서 join</p>
+
+<p><br /></p>
+
+<p><strong>실습</strong></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/162006641-cb93bec6-bc8f-4a9b-88ed-ac0c01c535b1.png" alt="image" /></p>
+
+<p>모든 항목이 보이게 join</p>
+
+<p><br /></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/162006754-77181852-0b3d-4066-8b52-37b634ad7134.png" alt="image" /></p>
+
+<p>특정 항목만 보이게 join → error: id값이 중복으로 존재함</p>
+
+<p><br /></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/162006829-6ade1442-dccf-424a-81da-8763dd63372c.png" alt="image" /></p>
+
+<p>2번 문제 해결 방안: 어떤 table의 id값을 보이게할 것인지 명시해주면 됨</p>
+
+<p><br /></p>
+
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d00b99e2-d231-4e3e-a8af-dabf482e7f43/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220406%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20220406T150814Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=579f2aed492f526efdc4b7cad95b7cbcdaffc974579ad438bcc8ef345afed56b&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=filename%20%3D%22Untitled.png%22&amp;x-id=GetObject" alt="img" /></p>
+
+<p>topic table의 id column명을 topic_id로 변경</p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="인터넷과-데이터베이스">인터넷과 데이터베이스</h3>
+
+<p>database client와 database server가 인터넷을 통해 request, response를 주고 받음(정보 관리)</p>
+
+<p>database client: request를 server에 보내는 쪽</p>
+
+<p>database server: 들어온 request에 대한 response를 보내는 쪽</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/162006994-6b845e9c-ee83-45b3-bb06-dcbaea41deeb.png" alt="image" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="mysql-client">MySQL Client</h3>
+
+<ul>
+  <li>MySQL monitor: 명령어를 통해서만 제어할 수 있는 클라이언트</li>
+  <li>MySQL Workbench: GUI를 이용해 간단히 제어할 수 있는 클라이언트</li>
+</ul>
+
+<p>둘 모두 각각의 장단점이 있으므로 각자에게 맞는 클라이언트를 찾아서 사용하면 됨. 위의 두 클라이언트 외에도 다양한 클라이언트가 있으므로 찾아서 사용하기!</p>
+
+<p>나의 경우, cmd로만 사용해봐서 cmd로 사용하는 것이 제일 편하다. github를 사용할 때에도 gitbash를 주로 사용하는데 이런 걸 보면 GUI 기반 프로그램을 사용하는 게 좀 낯선 것 같기도 하다. 사실 졸프하면서 fork라는 프로그램을 깔아봤는데 손이 잘 안 간다…</p>
+:ET

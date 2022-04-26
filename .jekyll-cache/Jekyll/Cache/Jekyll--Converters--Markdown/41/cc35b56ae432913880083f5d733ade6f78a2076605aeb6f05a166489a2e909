@@ -1,0 +1,198 @@
+I"�<p><a href="https://youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv">cs231n 강의</a></p>
+
+<p><br /></p>
+
+<p>LeNet-5: 성공적인 최초의 ConvNet</p>
+
+<ul>
+  <li>stride = 1 인 5x5 filter</li>
+  <li>Conv와 Pooling Layer 거친 후 FC Layer가 붙음</li>
+  <li>간단한 모델이나, 숫자 인식에서 좋은 결과를 얻음</li>
+</ul>
+
+<p><br /></p>
+
+<p>AlexNet</p>
+
+<ul>
+  <li>최초의 large scale CNN</li>
+  <li>ImageNet Classification task에서 좋은 성능을 보임</li>
+  <li>Conv-Pool-Norm 구조 두번 반복 후 Conv Pool FC layer가 붙음</li>
+  <li>LeNet과 유사, layer가 더 많아짐(5개 conv, 2개 FC)
+    <ul>
+      <li>참고) Pooling layer에는 parameter가 없음</li>
+    </ul>
+  </li>
+  <li>ReLU 사용</li>
+  <li>Norm layer 있음(지금은 사용 x)</li>
+  <li>data augmentation을 많이 함 (flipping, jittering, color norm)</li>
+  <li>dropout 0.5, batch size 128, SGD momentum 0.9, initial lr 1e-2, final lr 12-10, weight decay, model ensemble</li>
+  <li>모델이 두개로 나누어져 교차하는 것을 볼 수 있음(GPU의 용량 한계 때문)
+    <ul>
+      <li>Conv 1,2,4,5에서는 같은 GPU 내의 feature map만 이용</li>
+      <li>Conv 3, FC 6,7,8에서는 이전 input layer의 전체 depth를 전부 가져옴</li>
+    </ul>
+  </li>
+  <li>transfer learning에 많이 사용되었음</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/165305125-f35ecbae-cf52-4e9f-ada5-1de520b6d372.png" alt="image" /></p>
+
+<p><br /></p>
+
+<p>ZFNet</p>
+
+<ul>
+  <li>AlexNet의 hyperparameter를 개선한 모델</li>
+</ul>
+
+<p><br /></p>
+
+<p>VGGNet(이 때부터 네트워크가 훨씬 깊어짐)</p>
+
+<ul>
+  <li>더 깊은 네트워크(16-19 layer)</li>
+  <li>더 작은 filter(3x3)
+    <ul>
+      <li>depth를 더 키울 수 있음</li>
+      <li>7x7 filter와 실질적으로 동일한 receptive field를 가지면서도 더 깊은 layer를 쌓을 수 있음</li>
+      <li>non linearity 추가 가능</li>
+      <li>parameter 줄어듦</li>
+    </ul>
+  </li>
+  <li>AlexNet과 비슷한 패턴 반복: Conv와 Pooling layer가 반복적으로 진행. 단, local response normalization은 사용하지 않음</li>
+  <li>VGG16과 VGG19가 있는데, 19는 성능이 아주 조금 올라가지만 메모리도 더 사용하므로 주로 VGG16 사용</li>
+  <li>마지막 FC7은 4096 사이즈의 레이어로, 아주 좋은 featrue representation을 가짐</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/165305139-085e87cd-a783-425b-8fb3-7fbcc648b4c9.png" alt="image" /></p>
+
+<p><br /></p>
+
+<p>GoogLeNet</p>
+
+<ul>
+  <li>22 layer</li>
+  <li>FC layer는 없음 → 파라미터 감소</li>
+  <li>Inception Module 쌓아 사용
+    <ul>
+      <li>network within a network</li>
+      <li>동일한 input을 받는 서로 다른 다양한 필터들이 병렬로 존재</li>
+      <li>각 계산을 거친 후, concatenate</li>
+      <li>계산 비용 문제 해결을 위해 inception module 내의 병렬적인 layer들에 각각 1x1 conv적용</li>
+    </ul>
+  </li>
+  <li>auxiliary classifier 존재
+    <ul>
+      <li>작은 부가 네트워크</li>
+      <li>ImageNet trainset loss 계산함 → 네트워크가 깊기 때문 → 추가 시 중간 레이어의 학습을 도울 수 있음</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/165305157-1711daff-e7b1-4444-9f12-8b59b81d1788.png" alt="image" /></p>
+
+<p><br /></p>
+
+<p>ResNet</p>
+
+<ul>
+  <li>아주 깊은 네트워크 (152)</li>
+  <li>네트워크가 깊어질수록 더 좋은 성능을 내는가 질문 → 성능이 더 안 좋을 수 있음(optimization 문제) → network가 깊어질수록 optimization이 어려울 수 있음</li>
+  <li>Residual block 쌓아 올림
+    <ul>
+      <li>H(x) - x라는 변화량을 학습 (잔차/residual)</li>
+      <li>Skip connection 도입</li>
+      <li>두 개의 3x3 conv layer</li>
+    </ul>
+  </li>
+  <li>주기적으로 filter를 두배 씩 늘리고 stride 2를 이용해 downsampling</li>
+  <li>초반에는 Conv layer가 붙고 FC layer가 없음. 대신 Global Average Pooling 진행</li>
+  <li>마지막에는 1000개의 클래스 분류를 위한 노드가 붙음</li>
+  <li>model의 depth가 50이상일 때 bottleneck layer를 도입(depth 조절)</li>
+  <li>Conv layer 다음에 batch norm 사용</li>
+  <li>초기화 xavier</li>
+  <li>minibatch size 256, weight decay, no dropout, lr scheduling, 2로 나누는 scaling factor 추가(SGD + Momentum에서 초기화 성능)</li>
+  <li>네트워크가 깊어질수록 train error는 줄어듦</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/165305170-6bf1ae08-7cae-4a10-95ea-a4d676bc1ebb.png" alt="image" /></p>
+
+<p><br /></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/165305191-f06d2f61-bbe1-452f-acae-bf196eb2092a.png" alt="image" /></p>
+
+<p>앞서 살펴본 모델들의 model complexity 비교</p>
+
+<p><br /></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/165305211-72a0f86c-2b21-4280-871a-19fb16503787.png" alt="image" /></p>
+
+<p>forward pass time과 power consumption 비교</p>
+
+<p><br /></p>
+
+<p>다른 architecture</p>
+
+<ul>
+  <li>Network in Network (NiN)
+    <ul>
+      <li>MLP conv layer를 기본 아이디어로</li>
+      <li>각 conv 안에 MLP 쌓음</li>
+      <li>ResNet, GoogLeNet보다 먼저 bottleneck 개념 정립</li>
+    </ul>
+  </li>
+  <li>Identity Mappings in Deep Residual Networks
+    <ul>
+      <li>ResNet 파생</li>
+      <li>ResNet block path 조절</li>
+    </ul>
+  </li>
+  <li>Wide Residual Networks
+    <ul>
+      <li>depth보다 residual이 중요하다고 주장</li>
+      <li>Residual Connection이 있다면 네트워크가 더 깊어질 필요가 없다고 주장</li>
+      <li>residual block을 더 넓게 만듦 → filter 크게</li>
+      <li>병렬화되어 계산 효율 증가</li>
+    </ul>
+  </li>
+  <li>ResNeXt
+    <ul>
+      <li>ResNet의 저자</li>
+      <li>width 관련 연구</li>
+      <li>residual block 내에 다중 병렬 경로를 추가함</li>
+      <li>thinner block을 병렬로 여러개 묶음</li>
+      <li>wWide ResNet, Inception Module과 연관</li>
+    </ul>
+  </li>
+  <li>Stochastic Depth
+    <ul>
+      <li>depth에 관란 연구</li>
+      <li>train time에 layer의 일부를 제거 → vanishing gradient problem에 대한 sol</li>
+      <li>dropout과 유사</li>
+    </ul>
+  </li>
+  <li>FractalNet
+    <ul>
+      <li>non-ResNet</li>
+      <li>shallow/deep network의 정보 모두를 잘 전달하는 것이 중요하다 생각</li>
+      <li>shallow/deep path를 모두 output에 연결</li>
+      <li>train에는 일부, test에는 full network 사용</li>
+    </ul>
+  </li>
+  <li>DenseNet
+    <ul>
+      <li>Dense Block</li>
+      <li>한 layer가 그 하위의 모든 layer와 연결됨</li>
+      <li>vanishing gradient problem 완화</li>
+    </ul>
+  </li>
+  <li>SqueezeNet
+    <ul>
+      <li>효율성 중시</li>
+      <li>fire module</li>
+      <li>squeeze layer, expand layer</li>
+    </ul>
+  </li>
+</ul>
+:ET

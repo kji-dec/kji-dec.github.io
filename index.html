@@ -1,0 +1,3902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Home | Jingnii Develop</title>
+<meta name="generator" content="Jekyll v4.3.1">
+<meta property="og:title" content="Home">
+<meta name="author" content="kji-dec">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="I am studying… Algorithm, Flask, Flutter, Spring Boot, CV, NLP…">
+<meta property="og:description" content="I am studying… Algorithm, Flask, Flutter, Spring Boot, CV, NLP…">
+<link rel="canonical" href="/jekyll-theme-yat/">
+<meta property="og:url" content="/jekyll-theme-yat/">
+<meta property="og:site_name" content="Jingnii Develop">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Home">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"kji-dec"},"description":"I am studying… Algorithm, Flask, Flutter, Spring Boot, CV, NLP…","headline":"Home","name":"Jingnii Develop","url":"/jekyll-theme-yat/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="Jingnii Develop">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="Jingnii Develop" src="" onerror="this.style.display='none'">
+  Jingnii Develop
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(/jekyll-theme-yat/assets/images/banners/home.jpeg)"></div>
+        <img class="img-placeholder" src="/jekyll-theme-yat/assets/images/banners/home.jpeg">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner"><div class="page-banner-default">
+            <h1 class="page-banner-heading">
+              Jingnii Develop
+            </h1>
+            <h2 class="page-banner-subheading">
+              
+            </h2>
+          </div></div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="articles">
+  
+
+  
+
+
+  <div class="pagination">
+  <!-- Post list links -->
+  <ul class="post-list">
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/dpa/2023/01/04/DPA-day2.html">
+          DPA 2일차
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jan 04, 2023</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/dpa/2023/01/04/DPA-day2.html">
+        <p>
+        GitHub
+
+ ❗ **git ≠ github**
+
+
+
+git은 버전 관리 시스템(VCS), github는 git을 사용해 cloud에 저장하는 서비스! github과 같은 레벨에는 gitlab(사설 서버 구성 가능), bitbucket이 있음
+
+git client에는 gitCLI, git GUI, sourcetree, kraken, smartGit 등이 있고, 나는 fork랑 gitCLI, kraken을 사용해봤는데 fork가 가장 깔끔했으나, gui가 어색해서 gitCLI로 돌아옴
+
+
+
+git의 특징
+
+
+  빠른 속도, 단순한 구조
+  분산형 저장소 지원
+  비선형적 개발 가능 (브랜치 이용)
+
+
+
+
+git 이... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/os/2022/11/30/OS-Study-Week5-2.html">
+          5-2. CPU Scheduling 2
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 30, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/os/2022/11/30/OS-Study-Week5-2.html">
+        <p>
+        반효경 교수님의 2014-1 운영체제 강의를 듣고 정리한 글입니다.
+
+
+
+Multilevel Queue
+
+
+
+
+  위로 갈수록 우선순위가 높음
+  고려 사항
+    
+      프로세스를 어느 줄에 넣을 것인가
+      우선순위가 높은 큐가 비어있지 않으면 계속 우선순위가 높은 큐가 CPU를 가지고 있고 다른 큐로는 넘기지 않을 것인가 ← 우선 순위가 낮은 큐는 starvation
+    
+  
+  ready queue를 여러개로 분할 (여러 줄로 CPU를 기다리는 것)
+    
+      foreground(interactive) ← RR(사람과 상호작용을 해야하므로 짧은 시간 여러번 도는 게 나음)
+     ... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#OS">#OS</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/os/2022/11/29/OS-Study-Week5-1.html">
+          5. CPU Scheduling 1
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 29, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 5 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/os/2022/11/29/OS-Study-Week5-1.html">
+        <p>
+        반효경 교수님의 2014-1 운영체제 강의를 듣고 정리한 글입니다.
+
+
+
+프로그램을 실행하게 되면 어떤 프로그램이건 아래의 절차에 따라 실행이 됨(CPU만 연속적으로 쓰는 단계와 I/O를 하는 단계가 반복되며 나타남)
+
+
+
+
+  사람과 interactive한 job이 CPU burst와  I/O burst가 빈번하게 번갈아가며 나타남
+  과학 계산용 프로그램과 같은 연산이 긴 프로그램은 CPU를 오래 잡게 됨
+
+
+
+
+
+  여러 종류의 Job(=Process)이 섞여 있기 때문에 CPU 스케줄링이 필요함 (I/O bound job 때문이라 생각하면 됨)
+    
+      Interactive job에게 적절한 re... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#OS">#OS</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/os/2022/11/27/OS-Study-Week4.html">
+          4. Process Management 1, 2
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 27, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/os/2022/11/27/OS-Study-Week4.html">
+        <p>
+        반효경 교수님의 2014-1 운영체제 강의를 듣고 정리한 글입니다.
+
+
+
+프로세스 생성 (Process Creation)
+
+
+  부모 프로세스(Parent process)가 자식 프로세스(Child process)를 생성함
+    
+      주로 “복제”를 이용 → 프로세스의 문맥을 복제
+    
+  
+  프로세스의 트리(계층 구조) 형성
+  프로세스는 자원을 필요로 함
+    
+      운영체제로부터 받음
+      부모와 공유하는 모델도 있고 아닌 경우도 있음
+    
+  
+  자원의 공유
+    
+      부모와 자식이 모든 자원을 공유하는 모델
+      일부를 공유하는 모델
+      전혀 공유하지 ... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#OS">#OS</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/os/2022/11/20/OS-Study-Week3-2.html">
+          3-2. Process 2, 3
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 20, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/os/2022/11/20/OS-Study-Week3-2.html">
+        <p>
+        반효경 교수님의 2014-1 운영체제 강의를 듣고 정리한 글입니다.
+
+
+
+수업 전 Q&amp;A
+
+동기식 입출력과 비동기식 입출력의 차이
+
+
+  동기식 입출력
+    
+      어떤 프로세스가 입출력 요청을 했을 때, 운영체제를 통해서 해야하므로 프로세스는 운영체제에 입출력 요청을 함. 그리고 해당 프로세스가 입출력이 끝날 때까지 아무것도 안 하고 기다려야 하는 경우
+      구현 방법
+        
+          CPU를 가지고 있으면서 기다리게 구현 → CPU 낭비
+          당장 일을 할 수 있는 다른 프로세스에게 CPU를 넘겨주게 구현 → 일반적으로 구현하는 방법
+        
+      ... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#OS">#OS</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/os/2022/11/20/OS-Study-Week3-1.html">
+          3-1. Process 1
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 20, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/os/2022/11/20/OS-Study-Week3-1.html">
+        <p>
+        반효경 교수님의 2014-1 운영체제 강의를 듣고 정리한 글입니다.
+
+
+
+프로세스의 개념
+
+프로세스: 실행 중인 프로그램
+
+
+  
+    프로세스의 문맥; 이 프로그램이 무엇을 어떻게 실행했는지,
+
+    현재 시점이 어떤 상태에 있는지
+
+    를 정확하게 나타내기 위한 것
+
+    
+      예시
+        
+          PC(Program Counter)가 코드의 어느 부분을 가리키고 있는가
+          프로세스의 메모리에 어떤 내용을 담고 있는가
+          함수가 호출된 상태였다면 스택에 뭔가가 쌓여있을 텐데 현재 어디까지 쌓여있는가
+          데이터 영역의 변수의 값은 얼마인... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#OS">#OS</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/os/2022/11/11/OS-Study-Week2-2.html">
+          2-2. System Structure &amp; Program Execution 2
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 11, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/os/2022/11/11/OS-Study-Week2-2.html">
+        <p>
+        반효경 교수님의 2014-1 운영체제 강의를 듣고 정리한 글입니다.
+
+
+
+동기식 입출력과 비동기식 입출력
+
+
+
+Synchronous I/O
+
+
+  I/O 요청 후 입출력 작업이 완료된 후에야 제어가 사용자 프로그램에 넘어감
+  구현방법 1
+    
+      I/O가 끝날 때까지 CPU를 낭비시킴
+      매시점 하나의 I/O만 일어날 수 있음
+    
+  
+  구현방법 2 ✔️
+    
+      I/O가 완료될 때까지 해당 프로그램에게서 CPU를 빼앗음
+      I/O 처리를 기다리는 줄에 그 프로그램을 줄 세움
+      다른 프로그램에게 CPU를 줌
+    
+  
+
+
+Asynchronous I/O
+
+
+ ... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#OS">#OS</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/os/2022/11/11/OS-Study-Week2-1.html">
+          2-1. System Structure &amp; Program Execution 1
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 11, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/os/2022/11/11/OS-Study-Week2-1.html">
+        <p>
+        반효경 교수님의 2014-1 운영체제 강의를 듣고 정리한 글입니다.
+
+
+
+컴퓨터 시스템 구조
+
+
+
+
+device controller: I/O 디바이스를 전담하는 작은 CPU 같은 것(HW)
+
+
+  ex: 디스크의 내부 컨트롤은 디바이스 컨트롤러가 맡음
+  제어 정보를 위해 control register, status register를 가짐
+  local buffer: device controller의 작업 공간
+  I/O는 실제 device와 local buffer 사이에서 일어남
+  I/O가 끝났을 경우 device controller는 interrupt로 CPU에 그 사실을 알림
+
+
+*device driver(... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#OS">#OS</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/os/2022/11/06/OS-Study-Week1-2.html">
+          1-2. Introduction to Operating Systems
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 06, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/os/2022/11/06/OS-Study-Week1-2.html">
+        <p>
+        반효경 교수님의 2014-1 운영체제 강의를 듣고 정리한 글입니다.
+
+
+
+운영체제
+
+좁은 의미의 운영체제[커널]:  운영체제의 핵심적인 부분. 컴퓨터의 전원을 켜고 부팅이 된 이후에 항상 메모리에 상주함 (전공자의 입장에서 운영체제는 이 부분!)
+
+넓은 의미의 운영체제: 커널을 포함하며, 각종 주변 시스템을 다루는 유틸리티를 포함 (ex: 윈도우)
+
+
+
+운영체제의 목적
+
+컴퓨터 시스템의 자원을 효율적으로 관리
+
+
+  자원: CPU, 메모리, 각종 입출력 장치 등의 하드웨어 자원 &amp; 프로세스, 파일 메시지 등의 소프트웨어 자원
+  이미 주어진 자원으로 최대한의 성능을 뽑아내는 것이 목적 → 자원을 효율적 + ... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#OS">#OS</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/os/2022/11/06/OS-Study-Week1-1.html">
+          1-1. 강의소개
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 06, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/os/2022/11/06/OS-Study-Week1-1.html">
+        <p>
+        반효경 교수님의 2014-1 운영체제 강의를 듣고 정리한 글입니다.
+
+운영체제
+
+: 컴퓨터 하드웨어 바로 위에 설치되는 소프트웨어 (OS가 있기에 사용자가 컴퓨터 하드웨어를 이용할 수 있음)
+
+: 기능 및 목표
+
+
+  하드웨어와 어떻게 인터페이스 해야하는가 (컴퓨터 시스템의 자원을 효율적으로 관리)
+    
+      프로세서, 기억장치, 입출력 장치 등의 효율적 관리 (+ 형평성도 요구됨)
+    
+  
+  각종 소프트웨어 혹은 사용자와 어떻게 인터렉션하며 기능해야하는가 (컴퓨터 시스템을 편리하게 사용할 수 있는 환경 제공)
+    
+      동시 사용자/프로그램들이 각각 독자적 컴퓨터에서 수행되는 것 같은 환... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#OS">#OS</a></div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/etc/2022/04/07/eBlog-posting-error.html">
+          지킬 서버/깃허브 블로그 포스팅이 안되는 에러
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 07, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/etc/2022/04/07/eBlog-posting-error.html">
+        <p>
+        블로그를 작성하면서 아주 헛고생한 이야기를 좀 써보려고 한다. 사실 지금까지 블로그 포스팅을 할 때에는 주로 과거에 작성해둔 것들을 올리거나 늦은 밤에 포스팅을 했었다. 그래서 처음에 포스팅이 안 되는 이유를 찾느라 애먹었었지,,,
+
+
+
+이 문제는 Database Study Week4 글을 올리면서 마주하게 되었다. 분명 jekyll serve exec명령어로 로컬에서 실행했을 때에는 블로그 글이 잘 업데이트된 것을 확인할 수 있었다. 하지만 커밋 후에 블로그를 확인해보니 글이 올라와 있지 않았던 것이다!
+
+
+
+보통 깃헙 액션에서 페이지를 업데이트하면 바로 반영이 되어야 하는데 아무리 기다려도 블로그에 새 글이 올... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Blog">#Blog</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#Jekyll">#Jekyll</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/database/2022/04/07/Database-Study-Week4-%EB%B3%B5%EC%82%AC%EB%B3%B8.html">
+          Database Study Week4
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 07, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/database/2022/04/07/Database-Study-Week4-%EB%B3%B5%EC%82%AC%EB%B3%B8.html">
+        <p>
+        강의 링크
+
+
+
+관계형 데이터베이스의 필요성
+
+
+  
+    데이터에 중복된 정보가 있는 경우, 해당 데이터베이스에는 개선될 여지가 있는 것임
+
+    → 중복된 정보가 있는 column을 따로 테이블로 빼서 테이블로 만드는 방식으로 개선 가능
+  
+  
+    관계형 데이터베이스를 사용할 경우, 유지보수가 편리하며 별도의 데이터임에도 이름이 같은 경우 등에 대해 중복 데이터가 아님을 알 수 있음
+  
+  
+    trade off: 직관적으로 데이터를 볼 수 없음
+
+    
+      MySQL의 경우, 테이블을 합쳐서 볼 수 있음!
+    
+
+    
+
+    
+  
+
+
+Join
+
+SELECT * FROM [t... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Database">#Database</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#RDBMS">#RDBMS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#MySQL">#MySQL</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/database/2022/04/03/Database-Study-Week3.html">
+          Database Study Week3
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 03, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/database/2022/04/03/Database-Study-Week3.html">
+        <p>
+        강의 링크
+
+섹션 4 - CRUD
+
+✍🏼 CRUD - Create Read Update Delete
+
+
+
+우선, 데이터를 추가하기에 앞서서 지난시간에 추가한 table에 어떤 데이터를 넣어야할지 확인할 것이다.
+
+DESC [table_name];
+
+
+DESC 명령어를 사용하면 field와 type 등을 알아낼 수 있다.
+
+
+
+
+
+Create: 데이터를 추가하는 것 - INSERT 사용
+
+INSERT INTO topic (title,description,created,author,profile) 
+VALUES("MYSQL","Mysql is ...",NOW(), "Jingnii","developer");
+#NOW()... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Database">#Database</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#RDBMS">#RDBMS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#MySQL">#MySQL</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/web-dev/2022/03/30/What-is-HTTP.html">
+          What is HTTP
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Mar 30, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/web-dev/2022/03/30/What-is-HTTP.html">
+        <p>
+        
+
+
+  
+    HTTP 기본 개념 설명 [HyperText Transfer Protocol]
+
+    
+      
+        HTTP란? HTML 문서와 같은 리소스들을 가져올 수 있도록 해주는 프로토콜
+
+        
+          
+            웹에서 이루어지는 모든 데이터 교환의 기초. 즉, 서버와 클라이언트가 request와 response를 주고받기 위해 이용되는 메시지.
+          
+          
+            클라이언트-서버 프로토콜
+
+            
+              
+                일반적으로, 웹브라우저인 수신자 측에 의해 요청... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#HTTP">#HTTP</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#WEB">#WEB</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#HTTPS">#HTTPS</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/database/2022/03/27/Database-Study-Week2.html">
+          Database Study Week2
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Mar 27, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/database/2022/03/27/Database-Study-Week2.html">
+        <p>
+        강의 링크
+
+
+
+섹션2 - MySQL 기본
+
+MySQL 구조
+
+
+
+
+  표(table): 정보가 저장되는 곳
+  데이터베이스(database)/스키마(schema): 연관된 표를 모아놓은 곳(directory와 비슷)
+  데이터베이스 서버(database server): 스키마를 모아놓은 곳
+
+
+
+
+데이터베이스 효용
+
+
+  보안성 - 자체적인 보안시스템이 있으므로 좀 더 보안성이 좋음
+  권한 기능 - 사람 별로 읽기/쓰기 등의 기능을 부여할 수 있음
+    
+      일반적으로 root는 admin임
+    
+  
+
+
+
+
+MySQL에 로그인하는 것은 데이터베이스 서버에 접속하는 것. 아래 명령어를 입력한 후 패... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Database">#Database</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#RDBMS">#RDBMS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#MySQL">#MySQL</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/database/2022/03/16/Database-Study-Week1.html">
+          Database Study Week1
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Mar 16, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/database/2022/03/16/Database-Study-Week1.html">
+        <p>
+        강의 링크
+
+
+
+섹션0 - 데이터베이스 개요
+
+file은 성능/보안/편의성에 한계가 있음 → (극복) database
+
+
+
+Database
+
+
+  input과 output을 먼저 파악
+  input은 데이터의 생성, 수정, 삭제로 나뉘고, output은 읽는 기능 → CRUD
+
+
+
+
+
+
+File vs Database
+
+
+  file의 경우, 내부 자료의 내용에 따라 데이터를 활용하기 어려울 수 있음
+  spreadsheet를 활용해 데이터를 좀 더 확인하기 쉽게 할 수 있음 → Database적인 속성이 있음
+  database는 이러한 spreadsheet의 기능을 프로그래밍 언어로 활용할 수 있으며, 자동화하여... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Database">#Database</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#RDBMS">#RDBMS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#MySQL">#MySQL</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/flutter/2022/01/09/Flutter-Study-Week4.html">
+          Flutter Study Week4
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Jan 09, 2022</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/flutter/2022/01/09/Flutter-Study-Week4.html">
+        <p>
+        강의 - 완전 초보용 플러터 강좌
+
+Container
+
+
+  margin: container의 위치 조절(위젯의 바깥)
+  padding: container 안의 contents의 위치 조절(위젯의 안)
+  오직 하나의 child만 가짐
+
+
+Navigator
+
+
+  Router: 간단히 말하면, 모바일 화면에서 보는 하나의 페이지
+  Navigator: route 관리, stack 관리
+
+
+Collection and Generic
+
+
+  Interpolation → $(변수이름) 이 자리에 값을 넣음
+  Collection: 데이터들을 모아서 가지고 있는 자료구조
+  Generic: Collection이 가지고 있... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Flutter">#Flutter</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#APP">#APP</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/flutter/2021/12/15/Flutter-Study-Week3.html">
+          Flutter Study Week3
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 15, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/flutter/2021/12/15/Flutter-Study-Week3.html">
+        <p>
+        강의 - 완전 초보용 플러터 강좌
+
+Drawer menu
+
+[실습구조]
+
+
+  Drawer → ListView
+    
+      → UserAccountDrawerHeader
+      → ListTile
+    
+  
+  onPressed: 주로 버튼에 사용
+  onTab: 동작에 반응하는 이벤트에 사용
+
+
+BuildContext
+
+
+  widget tree에서 현재 widget의 위치를 알 수 있는 정보
+    
+      Scaffold Widget에 context를 넣어서 return
+    
+  
+  이 BuildContext는 stateless 위젯이나 state 빌드 메서드에 의해서 리턴된 위젯의 부... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Flutter">#Flutter</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#APP">#APP</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/flutter/2021/12/02/Flutter-Study-Week2.html">
+          Flutter Study Week2
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 02, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/flutter/2021/12/02/Flutter-Study-Week2.html">
+        <p>
+        강의 - 완전 초보용 플러터 강좌
+
+Class and Widget
+
+
+  Class: 속성 및 기능에 대한 정의
+  객체: class가 정의된 후 메모리 상에 할당된 것
+  인스턴스: class의 속성과 기능을 똑같이 가지고 있고 프로그래밍 상에서 사용되는 대상
+
+
+class Person{ //class
+  String name;
+  int age;
+  String sex;   //멤버 변수들
+  
+  //생성자의 인자값에 중괄호 -&gt; argument가 optional이라는 의미
+  Person({String name, int age, String sex}){ //생성자
+    this.name = name;... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Flutter">#Flutter</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#APP">#APP</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/flutter/2021/12/01/Flutter-Study-Week1.html">
+          Flutter Study Week1
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Dec 01, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/flutter/2021/12/01/Flutter-Study-Week1.html">
+        <p>
+        강의 - 완전 초보용 플러터 강좌
+
+설치 및 환경변수 설정
+
+설치
+
+
+  flutter.dev에서 zip 파일 다운로드 및 압축해제
+  Android Studio 설치 및 emulator 설치
+
+
+환경변수 설정
+
+
+  시스템변수 - Path에서 새로만들기를 눌러 flutter\bin 파일의 위치를 넣어줌
+  cmd에서 flutter 입력 시 잘 작동되는 것을 확인할 수 있음
+
+
+
+
+Widget
+
+: 독립적으로 실행되는 작은 프로그램 → 그래픽/데이터 처리하는 함수를 가지고 있음
+
+Flutter에서는?
+
+UI를 만들고 구성하는 모든 기본 단위 요소 + 눈에 보이지 않는 레이아웃을 정의하는 요소 = 모든것!
+
+
+  S... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Flutter">#Flutter</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#APP">#APP</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/pytorch/2021/11/22/pytorch-tutorial(2).html">
+          Pytorch Tutorial (2)
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 22, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 21 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/pytorch/2021/11/22/pytorch-tutorial(2).html">
+        <p>
+        참고 사이트
+
+Transfer Learning
+
+매우 큰 dataset에서 ConvNet을 미리 학습한 후, 이 ConvNet을 다른 작업을 위한 초기 설정 혹은 fixed feature extractor로 사용
+
+
+  finetuning: 무작위 초기화 대신 NN을 ImageNet 100 dataset 등으로 미리 학습한 신경망으로 초기화함. 나머지 과정은 그대로
+  fixed feature extractor로의 ConvNet: 마지막 FC layer를 제외한 모든 신경망의 weight을 고정함. 마지막 FC layer는 새로운 random weight을 갖는 layer로 대체되어 이 layer만 학습함
+
+
+아래... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Pytorch">#Pytorch</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/pytorch/2021/11/18/pytorch-tutorial(1).html">
+          Pytorch Tutorial (1)
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Nov 18, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 10 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/pytorch/2021/11/18/pytorch-tutorial(1).html">
+        <p>
+        참고사이트
+
+Data
+
+→ image, text, audio, video data를 주로 다루게 되면, 표준 Python 패키지를 사용하여 불러온 후 NumPy 배열로 변환하고, 이를 torch.*Tensor로 변환하면 됨
+
+
+  데이터 별 패키지
+    
+      이미지: Pillow, OpenCV
+      오디오: SciPy, LibROSA
+      텍스트: NLTK, SpaCy
+      영상: torchvision
+    
+  
+
+
+CIFAR10 dataset을 이용해 실습
+
+
+  
+    CIFAR10의 train/test용 dataset을 torchvision으로 불러오고 normalizing
+  ... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Pytorch">#Pytorch</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/cs231n/2021/05/17/cs231n-Lec9.html">
+          cs231n Lec9
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> May 17, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/cs231n/2021/05/17/cs231n-Lec9.html">
+        <p>
+        cs231n 강의
+
+
+
+LeNet-5: 성공적인 최초의 ConvNet
+
+
+  stride = 1 인 5x5 filter
+  Conv와 Pooling Layer 거친 후 FC Layer가 붙음
+  간단한 모델이나, 숫자 인식에서 좋은 결과를 얻음
+
+
+
+
+AlexNet
+
+
+  최초의 large scale CNN
+  ImageNet Classification task에서 좋은 성능을 보임
+  Conv-Pool-Norm 구조 두번 반복 후 Conv Pool FC layer가 붙음
+  LeNet과 유사, layer가 더 많아짐(5개 conv, 2개 FC)
+    
+      참고) Pooling layer에는 paramet... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/cs231n/2021/05/10/cs231n-Lec7.html">
+          cs231n Lec7
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> May 10, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 5 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/cs231n/2021/05/10/cs231n-Lec7.html">
+        <p>
+        cs231n 강의
+
+
+
+SGD: minibatch 내에서 data loss를 계산하고, gradient의 반대방향을 이용해 parameter vector를 업데이트 하는 방식
+
+단점
+
+
+  
+    느림: 아래로 볼록한 모양의 loss function이 있을 때, x방향, y방향의 합방향으로 gradient가 업데이트 될 것. 이때, 수평방향으로는 기울기 변화가 작고, 수직방향으로는 기울기 변화가 큼. 따라서 한방향으로 내려가는 것이 아니라 지그재그 형태로 최저점에 도달하게 되어 오랜 시간이 걸림
+  
+  
+    local minima, saddle point: local minima의 경우, loss 함수에서 ... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/cs231n/2021/05/03/cs231n-Lec6.html">
+          cs231n Lec6
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> May 03, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/cs231n/2021/05/03/cs231n-Lec6.html">
+        <p>
+        cs231n 강의
+
+
+
+Activation Functions
+
+
+
+Sigmoid: 0과 1사이의 output을 내놓음. 문제점은 아래와 같음.
+
+
+  saturation되는 것이 gradient를 kill할 수 있음.
+  zero-centered되지 않는 output
+  exp() 함수가 비용이 많이 듦. (이 문제는 그리 크지 않음)
+
+
+-&gt; input이 모두 같은 부호가 되면, W가 모두 같은 방향으로만 움직이게 됨. 그래서 파라미터 업데이트 시에 다같이 증가하거나 다같이 감소하여 사분면 중 두개의 영역만 사용하게 됨. 따라서 zero-mean data인 것이 좋음
+
+
+
+tanh: sigmoid의 zero... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/cs231n/2021/04/16/cs231n-Lec5.html">
+          cs231n Lec5
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 16, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/cs231n/2021/04/16/cs231n-Lec5.html">
+        <p>
+        cs231n 강의
+
+ConvNet 역사
+
+
+  
+    1957: Frank Rosenblatt의 the Mark → Perceptron
+  
+  
+    1960: Widrow and Hoff의 Adaline and Madaline
+  
+  
+    1980: Fukushima의 Neurocognition
+  
+  
+    1986: back-propagation 최초로 소개됨
+  
+  
+    1988: LeCun의 Gradient-based learning으로 document recognition
+  
+  
+    2006: 딥러닝
+  
+  
+    2012: Speech recognition &amp; Im... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/cs231n/2021/04/09/cs231n-Lec4.html">
+          cs231n Lec4
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 09, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/cs231n/2021/04/09/cs231n-Lec4.html">
+        <p>
+        cs231n 강의
+
+이번에는 cs231n lecture 4를 학습하고 정리를 해보았다.
+
+Backpropagation: computational graph를 통해 이용 가능함
+
+
+  parameter update를 위해서는 gradient를 구해야하는데, 복잡한 모델에서는 이를 구하기가 쉽지 않음. 이 때 이용하는 것이 backpropagation
+  gradient를 얻기 위해 computational graph 내부의 모든 변수에 대해 chain rule을 재귀적으로 사용
+  복잡한 함수를 이용하여 작업할 때 유용하게 쓰임
+
+
+
+
+
+  computational grah를 이용하면 backpropagation 진... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/cs231n/2021/04/02/cs231n-Lec3.html">
+          cs231n Lec3
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Apr 02, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 8 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/cs231n/2021/04/02/cs231n-Lec3.html">
+        <p>
+        cs231n 강의
+
+2강에서 배웠던 Linear Classifier는 결과가 그다지 정확하지 않았다. weight가 좋은지 정량화하는 어떤 것이 필요할 것이다. 최적화란, 그나마 덜 나쁜 w를 찾는 것이며, 이를 확인하는 척도를 Loss function을 통해 알아낸다.
+
+Loss Function: classifier가 어떻게 좋은지를 알려줌
+
+
+
+예시 dataset이 주어졌을 때
+
+!
+
+전체 Loss는 각 Loss의 합
+
+Multiclass SVM(Support Vector Machine) Loss
+
+
+  True인 카테고리를 제외한 나머지 카테고리 Y의 합을 구함(incorrect class를 전부 합함)
+  ... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/cs231n/2021/03/26/cs231n-Lec2.html">
+          cs231n Lec2
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Mar 26, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 8 mins</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/cs231n/2021/03/26/cs231n-Lec2.html">
+        <p>
+        cs231n 강의
+
+
+
+(해당 강의에서 사용한 dataset: CIFAR10)
+
+Image Classification: A core task in Computer Vision
+
+간단한 작동 방식: input image -&gt; 고정된 category label 중 하나를 할당
+
+인간은 시각을 통해 사고할 수 있기에 이미지를 구분하는 것은 쉬운 문제이지만 기계에게는 결코 쉬운 문제가 아님.
+
+Problem
+
+
+  Semantic Gap: 이미지 내의 개체의 의미와 컴퓨터가 실제로 인식하는 픽셀 값 사이의 큰 차이(에서 발생하는 문제). 예를 들어, 머신은 고양이 이미지의 전체적인 모습을 인식하지 못하고 [0, 25... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div>
+    </li>
+<li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="post-title">
+        <a class="post-link" href="/jekyll-theme-yat/cs231n/2021/03/19/cs231n-Lec1.html">
+          cs231n Lec1
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> Mar 19, 2021</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <a class="post-excerpt" href="/jekyll-theme-yat/cs231n/2021/03/19/cs231n-Lec1.html">
+        <p>
+        cs231n 강의
+
+lec1은 오리엔테이션 수업이라 neural networks와 computer vision 기술의 이론에 대한 직접적인 내용은 크게 없다. 그래서 이 글을 적기까지 고민이 많았다. 뭘 적어야할지 몰라서. 일단, 전체적으로 생물의 시각에 대한 이야기를 조금 언급하고 컴퓨터 비전의 역사를 설명하고 있다.
+
+생물은 simple cells, complex cells, hypercomplex cells와 electronical signal을 이용해 사물을 봄.
+
+BUT, 기계는 인간의 눈처럼 사물을 파악하기가 쉽지 않음.
+
+컴퓨터 비전에 관한 논의
+
+
+  MIT의 “The Summer Vision Pro... <span class="read_more">Read More</span>
+        </p>
+      </a>
+      <div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div>
+    </li>
+</ul>
+
+  <!-- Pagination links -->
+</div>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/jekyll-theme-yat/index.html">
+        All<span>30</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/jekyll-theme-yat/categories.html#h-DPA">
+          DPA <span>1</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/categories.html#h-Database">
+          Database <span>4</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/categories.html#h-Flutter">
+          Flutter <span>4</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/categories.html#h-OS">
+          OS <span>9</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/categories.html#h-Pytorch">
+          Pytorch <span>2</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/categories.html#h-Web-Dev">
+          Web-Dev <span>1</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/categories.html#h-cs231n">
+          cs231n <span>8</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/jekyll-theme-yat/categories.html#h-etc">
+          etc <span>1</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2023 kji-dec</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

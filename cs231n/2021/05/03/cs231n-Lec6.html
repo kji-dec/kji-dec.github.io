@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>cs231n Lec6 | Jingnii Develop</title>
+<meta name="generator" content="Jekyll v4.3.1">
+<meta property="og:title" content="cs231n Lec6">
+<meta name="author" content="kji-dec">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="cs231n 강의">
+<meta property="og:description" content="cs231n 강의">
+<link rel="canonical" href="/jekyll-theme-yat/cs231n/2021/05/03/cs231n-Lec6.html">
+<meta property="og:url" content="/jekyll-theme-yat/cs231n/2021/05/03/cs231n-Lec6.html">
+<meta property="og:site_name" content="Jingnii Develop">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-05-03T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="cs231n Lec6">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kji-dec"},"dateModified":"2021-05-03T00:00:00+00:00","datePublished":"2021-05-03T00:00:00+00:00","description":"cs231n 강의","headline":"cs231n Lec6","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/cs231n/2021/05/03/cs231n-Lec6.html"},"url":"/jekyll-theme-yat/cs231n/2021/05/03/cs231n-Lec6.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="Jingnii Develop">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="Jingnii Develop" src="" onerror="this.style.display='none'">
+  Jingnii Develop
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">cs231n Lec6</h1>
+  <h2 class="post-subtitle">Training Neural Networks I</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2021-05-03T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> May 03, 2021
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><a href="https://youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv">cs231n 강의</a></p>
+
+<p><br></p>
+
+<p><strong>Activation Functions</strong></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164890178-171bbf89-30d5-4cfa-94ec-f33ac9b7ff0c.png" alt="image"></p>
+
+<p>Sigmoid: 0과 1사이의 output을 내놓음. 문제점은 아래와 같음.</p>
+
+<ul>
+  <li>saturation되는 것이 gradient를 kill할 수 있음.</li>
+  <li>zero-centered되지 않는 output</li>
+  <li>exp() 함수가 비용이 많이 듦. (이 문제는 그리 크지 않음)</li>
+</ul>
+
+<p>-&gt; input이 모두 같은 부호가 되면, W가 모두 같은 방향으로만 움직이게 됨. 그래서 파라미터 업데이트 시에 다같이 증가하거나 다같이 감소하여 사분면 중 두개의 영역만 사용하게 됨. 따라서 zero-mean data인 것이 좋음</p>
+
+<p><br></p>
+
+<p>tanh: sigmoid의 zero-centered 문제를 해결한 모습으로, -1과 1사이의 output을 내놓음.</p>
+
+<ul>
+  <li>여전히 saturation 문제 있음</li>
+</ul>
+
+<p><br></p>
+
+<p>ReLU: 0보다 작은 input에서는 0을 output으로, 그 외의 구간에서는 x를 output으로 내놓음.</p>
+
+<ul>
+  <li>일부 saturation 문제 해결</li>
+  <li>계산 효율 좋음</li>
+  <li>zero-centered data가 아님</li>
+  <li>양수값에서는 saturation 발생하지 않으나 음수값에서는 saturation 발생</li>
+</ul>
+
+<p>-&gt; dead ReLU: data의 절반만 activate될 수 있음.</p>
+
+<ul>
+  <li>초기화를 잘못한 경우</li>
+  <li>learning rate가 지나치게 높은 경우</li>
+</ul>
+
+<p><br></p>
+
+<p>Leaky ReLU: 음의 구간에 어떤 파라미터 alpha를 곱해 음의 구간에서의 saturation 문제 해결</p>
+
+<p>ELU: exp() 이용한 것. 하지만 saturation될 수 있음</p>
+
+<p>Maxout Neuron: 기존 파라미터의 두배의 파라미터 수를 가지게 됨. ReLU와 Leaky ReLU를 좀 더 일반화 시킨 것.</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164890180-2bc64907-e759-45dd-a9e9-cb7e1c7a627c.png" alt="image"></p>
+
+<p>결론적으로, ReLU를 주로 사용하고 Leaky ReLU, Maxout, ELU를 시도해볼 수 있음. tanh도 가능은 하나 권장하지 않음. 그러나 sigmoid는 사용하지 않는 것이 좋음</p>
+
+<p><br></p>
+
+<p><strong>Data Preprocessing</strong></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164890187-4ab44109-fde9-4d60-b2b3-ac91debaf5c1.png" alt="image"></p>
+
+<p>주로 zero-centered data로 만들어주고, normalization을 거침. normalization은 모든 차원이 동일한 범위 내에 존재하게 하여 동등한 기여를 할 수 있게 함. (주로, 이미지의 경우는 zero-centered data까지만 맞춰줌. 이미지는 대부분 이미 스케일이 어느정도 맞춰져있어서 그 외의 것들은 굳이 필요 없음.)</p>
+
+<p><br></p>
+
+<p><strong>Weight initialization</strong></p>
+
+<p>모든 W=0이라면, 모든 뉴런이 전부 똑같은 연산을 수행하게 될 것. 모두 같은 연산을 하면, output이 모두 같아지고, gradient도 같아짐. 모든 가중치가 똑같은 값으로 업데이트 되며, 모든 뉴런의 모양이 같아질 것.(=&gt; Symmetric breaking”) 따라서, weight는 같은 값으로 초기화해서는 안됨.</p>
+
+<p>해결)</p>
+
+<ul>
+  <li>
+    <p>weight를 임의의 작은 값으로 초기화: 작은 network에서는 괜찮지만 좀 더 깊은 network에서는 update가 제대로 이루어지지 않을 것.</p>
+  </li>
+  <li>
+    <p>weight를 그보다 큰 값으로 초기화: saturation 발생으로 출력은 항상 +1/-1의 값만 가지며, 업데이트가 제대로 이루어지지 않을 것.</p>
+  </li>
+  <li>
+    <blockquote>
+      <p>: 입출력의 분산을 막아줌. 그러나 ReLU를 사용하게 되면 잘 작동하지 않음 =&gt;ReLU는 데이터의 절반을 0으로 만들어버리므로, 분포가 줄어들게 됨. 이를 해결하기 위해 뉴런의 절반이 사라졌다는 것을 반영하여 2로 나눠주면 됨.</p>
+    </blockquote>
+
+    <p>Xavier initialization</p>
+
+    <p><br></p>
+  </li>
+</ul>
+
+<p><strong>Batch Normalization</strong></p>
+
+<p>Gradient Vanishing이 나오지 않도록 하는 아이디어. activation function의 변화가 아닌 training 과정 자체를 안정화하는 역할을 함.</p>
+
+<ul>
+  <li>training하는 동안 모든 layer의 input이 unit gaussian이 됐으면 함 -&gt; forward pass 동안 그렇게 되도록 명시적으로 만들어 주면 됨. -&gt; batch 단위로 한 레이어에 input으로 들어오는 모든 값들을 이용하여 평균과 분산을 구해 normalization 해주면 됨. (미분 가능한 함수에서 가능함; 평균과 분산을 상수로 가지고만 있으면 미분 가능)</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164890190-6ff35ac9-e69e-4e4f-b720-9c89a8aee576.png" alt="image"></p>
+
+<p>BN은 input의 scale만 살짝 변경하는 역할을 하며, FC나 Conv 뒤에 사용함. bad scaling effect가 발생하나, 해당 bad effect는 충분히 상쇄될 수 있음.</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164890193-88350f52-760c-4674-bcb8-b0d6e378e44f.png" alt="image"></p>
+
+<ul>
+  <li>모든 mini-batch마다 각각 평균과 분산을 계산해주고, normalization 이후 scaling, shifting factor를 사용함</li>
+  <li>gradient의 흐름을 보다 원활하게 해주며, 학습이 더 잘되게 해주는 역할</li>
+  <li>learning rate를 높일 수 있으며, 다양한 initialization을 수행할 수 있음</li>
+  <li>regularization의 역할을 수행하기도 함</li>
+  <li>선형 변환으로, 공간적 구조가 잘 유지됨</li>
+  <li>test phase에서 새로운 계산을 굳이 요구하지 않음</li>
+</ul>
+
+<p><br></p>
+
+<p><strong>Babysitting the Learning Process</strong></p>
+
+<ol>
+  <li>
+    <p>Preprocess the data: zero-center, normalization (cv에서는 굳이 normalization x)</p>
+  </li>
+  <li>
+    <p>Choose the architecture: hidden layer를 어떻게 구성할 것인지 대략적으로 선택</p>
+  </li>
+  <li>
+    <p>Check the loss is reasonable: sanity check로 layer가 동작하는걸 확인함</p>
+  </li>
+  <li>
+    <p>Train: 작은 dataset을 먼저 넣어보고, 이때 overfitting되어 train accuracy가 100%가 나오면 모델이 동작하고 있음을 의미함</p>
+  </li>
+  <li>
+    <p>Training with regularization and learning rate: 각각에 대해 적잘한 값을 찾아봄. 이때 cost값과 training값 이용</p>
+
+    <p><br></p>
+
+    <p><br></p>
+  </li>
+</ol>
+
+<p><strong>Hyperparameter Optimization</strong></p>
+
+<p>Cross-validation: training set으로 학습시키고, validation set으로 평가하는 방법. 값을 넓은 범위(coarse stage)에서 좁은 범위(fine stage)로 줄여나가는 것. learning rate는 gradient와 곱해지므로, 선택 범위는 log scale(-&gt; 차수만 사용)을 사용하는 것이 좋음.</p>
+
+<p>Grid search: 하이퍼파라미터를 고정된 값과 간격으로 샘플링하는 것. 정해진만큼의 sampling만 가능하므로 good region을 찾지 못할 수 있음</p>
+
+<p><br></p>
+
+<p>Random search: 랜덤값을 이용하는 것. grid search보다 좋음. important variable에서 더 다양한 값을 샘플링할 수 있음</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164890198-2154c950-c6b0-4952-b2b9-f04bd73981c3.png" alt="image"></p>
+
+<p>+) 하이퍼파라미터 종류: learning rate, decay schedule, update type, regularization, network architecture, hidden unit과 depth의 수 등</p>
+
+<p><br></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164890201-562c85bf-9063-4198-a3de-f4f8ce1a5592.png" alt="image"></p>
+
+<ul>
+  <li>
+    <p>loss가 발산하면 learning rate이 높은 경우고, 평평하다면 learning rate이 너무 낮은 경우임. loss가 평평하다가 갑자기 가파르게 내려가는 경우는 주로 초기화에서 문제가 발생했다고 볼 수 있음(gradient의 backprop이 잘 되지 않다가 학습이 진행되면서 회복되는 것). 위의 좌측이 최적의 learning rate의 모습이라 할 수 있음</p>
+
+    <p><br></p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164890202-f57fef7b-b16e-4c25-a25f-a5f01daec896.png" alt="image"></p>
+
+<ul>
+  <li>train_acc와 va_cc의 차이가 크다면, overfit일 수 있음 -&gt; regularization의 강도 높이기</li>
+  <li>gap이 없는 경우, overfit이 아직 일어나지 않은 경우로, capacity를 높일 수 있는 여유가 된다는 의미임</li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/cs231n/2021/04/16/cs231n-Lec5.html" title="cs231n Lec5">cs231n Lec5</a><a class="next" href="/jekyll-theme-yat/cs231n/2021/05/10/cs231n-Lec7.html" title="cs231n Lec7">cs231n Lec7</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/cs231n/2021/05/03/cs231n-Lec6.html" title="cs231n Lec7">cs231n Lec6</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/cs231n/2021/03/26/cs231n-Lec2.html" title="cs231n Lec7">cs231n Lec2</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/database/2022/03/27/Database-Study-Week2.html" title="cs231n Lec7">Database Study Week2</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/database/2022/03/16/Database-Study-Week1.html" title="cs231n Lec7">Database Study Week1</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --></section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2023 kji-dec</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

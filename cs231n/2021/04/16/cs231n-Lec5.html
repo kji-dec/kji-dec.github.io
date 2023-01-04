@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>cs231n Lec5 | Jingnii Develop</title>
+<meta name="generator" content="Jekyll v4.3.1">
+<meta property="og:title" content="cs231n Lec5">
+<meta name="author" content="kji-dec">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="cs231n 강의">
+<meta property="og:description" content="cs231n 강의">
+<link rel="canonical" href="/jekyll-theme-yat/cs231n/2021/04/16/cs231n-Lec5.html">
+<meta property="og:url" content="/jekyll-theme-yat/cs231n/2021/04/16/cs231n-Lec5.html">
+<meta property="og:site_name" content="Jingnii Develop">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-04-16T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="cs231n Lec5">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kji-dec"},"dateModified":"2021-04-16T00:00:00+00:00","datePublished":"2021-04-16T00:00:00+00:00","description":"cs231n 강의","headline":"cs231n Lec5","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/cs231n/2021/04/16/cs231n-Lec5.html"},"url":"/jekyll-theme-yat/cs231n/2021/04/16/cs231n-Lec5.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="Jingnii Develop">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="Jingnii Develop" src="" onerror="this.style.display='none'">
+  Jingnii Develop
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">cs231n Lec5</h1>
+  <h2 class="post-subtitle">Introduction to Neural Networks</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2021-04-16T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Apr 16, 2021
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><a href="https://youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv">cs231n 강의</a></p>
+
+<p>ConvNet 역사</p>
+
+<ul>
+  <li>
+    <p>1957: Frank Rosenblatt의 the Mark → Perceptron</p>
+  </li>
+  <li>
+    <p>1960: Widrow and Hoff의 Adaline and Madaline</p>
+  </li>
+  <li>
+    <p>1980: Fukushima의 Neurocognition</p>
+  </li>
+  <li>
+    <p>1986: back-propagation 최초로 소개됨</p>
+  </li>
+  <li>
+    <p>1988: LeCun의 Gradient-based learning으로 document recognition</p>
+  </li>
+  <li>
+    <p>2006: 딥러닝</p>
+  </li>
+  <li>
+    <p>2012: Speech recognition &amp; Image classification</p>
+  </li>
+  <li>
+    <p>2012: Alec Krizhevsky의 Alexnet</p>
+
+    <p><br></p>
+  </li>
+</ul>
+
+<p>Convnet의 total image</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164724120-2b320105-d6d9-4039-9bba-62c68fd1bbbf.png" alt="image"></p>
+
+<p>Input - low level features - mid level features - high level features - linearly spearable classifier</p>
+
+<p>FC Layer: 프로세스 결과를 취하여 이미지를 정의된 라벨로 분류하는 데에 사용</p>
+
+<ul>
+  <li>즉, 공간 정보를 담은 이전 결과를 하나의 벡터값으로 나타내는 역할을 함</li>
+</ul>
+
+<p><br></p>
+
+<p>Convolution Layer: input image에 대해 filter를 slide하며 각 spatial location에서의 내적을 구해 특징을 뽑아냄 → activation map</p>
+
+<ul>
+  <li>output size: (N - F) /  stride + 1</li>
+  <li>filter가 커지면 activation map은 조금 빨라지고, 그 크기가 작아짐 → sol) padding</li>
+</ul>
+
+<p><br></p>
+
+<p>Padding</p>
+
+<ul>
+  <li>Output image size를 유지하기 위해 이용</li>
+  <li>edge 성분도 활용할 수 있게 됨 → 패딩을 붙이기 전에는 가장자리의 픽셀 정보는 딱 한 번만 이용하게 되어 중요한 feature 정보가 있었다면 제대로된 CNN을 구현하지 못할 수도 있음</li>
+  <li>output size: (N - F + 2P) / stride + 1</li>
+  <li>map size를 동일하게 유지하기 위한 padding size = (F - 1) / 2</li>
+</ul>
+
+<p><br></p>
+
+<p>1x1 convolution: 1x1 size의 convolution filter를 이용한 Convolution Layer</p>
+
+<ul>
+  <li>채널 수 조절 가능</li>
+  <li>계산량의 감소</li>
+  <li>더 깊은 네트워크</li>
+  <li>비선형성을 더해줌</li>
+</ul>
+
+<p>→ 모델 성능 상향</p>
+
+<p><br></p>
+
+<p>Pooling Layer: downsampling의 역할을 함</p>
+
+<ul>
+  <li>CNN에는 많은 convolution layer를 쌓기 때문에 많은 파라미터가 필요한데, 이는 overfitting을 발생시킬 수 있음</li>
+  <li>이에 따라 downsampling이 필요한데 그 역할을 하는 것이 pooling layer</li>
+  <li>이미지의 차원은 줄이나, depth는 변하지 않음</li>
+  <li>downsampling이 목적이므로 padding을 하지 않음</li>
+  <li>Max Pooling: 필터 영역에서 max값만 뽑아 이용함</li>
+  <li>Global Average Pooling: feature map 전체에 대해서 average pooling을 함 → feature를 1차원 벡터로 만드는 것이 목적</li>
+</ul>
+
+<p><br></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164724141-c75b64f2-f167-4d73-bc77-1760b46592d3.png" alt="image"></p>
+
+<p>FC Layer: 이미지를 한 줄로 늘려 벡터로 만든 후 하나의 수를 추출해냄. 각 뉴런이 전체 입력 이미지를 한 번에 보는 것과 같음</p>
+
+<p><br></p>
+
+<p>Convolution Layer: 뉴런의 관점으로 봤을 때 local connectivity를 가진 뉴런과 같음. 입력 이미지를 부분부분 여러 번 보는 것과 같음</p>
+
+<p><br></p>
+
+<p>CNN Size 조절</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164724152-38dbd9fa-5455-4ee5-8b3e-dbfce8cdf7a8.png" alt="image"></p>
+
+<ul>
+  <li>Input layer: 2로 여러번 나눌 수 있어야 함</li>
+  <li>Conv layer: 최대 5x5의 작은 필터, s = 1, l = O을 만드는 0 padding</li>
+  <li>Pooling layer: (general) F = 2 or F = 3</li>
+</ul>
+
+<p><br></p>
+
+<p>CNN Architecutre</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164724175-74059ebf-032e-47a5-aa06-6dbd0d7034fd.png" alt="image"></p>
+
+<p>VGGNet: 네트워크의 깊이가 성능에 어떤 영향을 미치는지 확인하기 위해 만들어짐. 결론적으로, 네트워크의 깊이가 깊어질수록 분류 에러가 감소하여 성능이 좋아짐</p>
+
+<p><br></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/164724193-3173db54-f888-428c-931f-2aa3c45e3c8d.png" alt="image"></p>
+
+<p>ResNet: Residual block 이용 → input을 output이 더해줄 수 있는 지름길을 하나 만들어줌. residual을 최소로 해주는 것이 목표</p>
+
+<p><br></p>
+
+<p>SENet: SE block 이용</p>
+
+<ul>
+  <li>VGGNet, GoogLeNet, ResNet 등에 첨가하여 성능 향상 가능</li>
+  <li>목적: convolution을 통해 생성된 특성을 채널 당 중요도를 고려하여 재보정하는 것</li>
+  <li>Conv 연산 뒤에 붙여 성능 향상 도모</li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/cs231n/2021/04/09/cs231n-Lec4.html" title="cs231n Lec4">cs231n Lec4</a><a class="next" href="/jekyll-theme-yat/cs231n/2021/05/03/cs231n-Lec6.html" title="cs231n Lec6">cs231n Lec6</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/os/2022/11/06/OS-Study-Week1-1.html" title="cs231n Lec6">1-1. 강의소개</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/cs231n/2021/05/10/cs231n-Lec7.html" title="cs231n Lec6">cs231n Lec7</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/cs231n/2021/04/09/cs231n-Lec4.html" title="cs231n Lec6">cs231n Lec4</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/database/2022/03/27/Database-Study-Week2.html" title="cs231n Lec6">Database Study Week2</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --></section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2023 kji-dec</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Pytorch Tutorial (2) | Jingnii Develop</title>
+<meta name="generator" content="Jekyll v4.3.1">
+<meta property="og:title" content="Pytorch Tutorial (2)">
+<meta name="author" content="kji-dec">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="참고 사이트">
+<meta property="og:description" content="참고 사이트">
+<link rel="canonical" href="/jekyll-theme-yat/pytorch/2021/11/22/pytorch-tutorial(2).html">
+<meta property="og:url" content="/jekyll-theme-yat/pytorch/2021/11/22/pytorch-tutorial(2).html">
+<meta property="og:site_name" content="Jingnii Develop">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-11-22T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Pytorch Tutorial (2)">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kji-dec"},"dateModified":"2021-11-22T00:00:00+00:00","datePublished":"2021-11-22T00:00:00+00:00","description":"참고 사이트","headline":"Pytorch Tutorial (2)","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/pytorch/2021/11/22/pytorch-tutorial(2).html"},"url":"/jekyll-theme-yat/pytorch/2021/11/22/pytorch-tutorial(2).html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="Jingnii Develop">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="Jingnii Develop" src="" onerror="this.style.display='none'">
+  Jingnii Develop
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Pytorch Tutorial (2)</h1>
+  <h2 class="post-subtitle">Transfer Learning for Computer Vision</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2021-11-22T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Nov 22, 2021
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 21 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Pytorch">#Pytorch</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><a href="https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html">참고 사이트</a></p>
+
+<h3 id="transfer-learning">Transfer Learning</h3>
+
+<p>매우 큰 dataset에서 ConvNet을 미리 학습한 후, 이 ConvNet을 다른 작업을 위한 초기 설정 혹은 fixed feature extractor로 사용</p>
+
+<ul>
+  <li>finetuning: 무작위 초기화 대신 NN을 ImageNet 100 dataset 등으로 미리 학습한 신경망으로 초기화함. 나머지 과정은 그대로</li>
+  <li>fixed feature extractor로의 ConvNet: 마지막 FC layer를 제외한 모든 신경망의 weight을 고정함. 마지막 FC layer는 새로운 random weight을 갖는 layer로 대체되어 이 layer만 학습함</li>
+</ul>
+
+<p>아래의 예제는 개미와 벌을 분류하는 model을 학습하는 것. generalize하기에는 작은 dataset이지만, transfer learning을 이용할 것임 (train - 120장, val - 75)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="n">optim</span>
+<span class="kn">from</span> <span class="nn">torch.optim</span> <span class="kn">import</span> <span class="n">lr_scheduler</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">torchvision</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">transforms</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">ion</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data_transforms</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'train'</span><span class="p">:</span> <span class="n">transforms</span><span class="p">.</span><span class="n">Compose</span><span class="p">([</span>
+        <span class="n">transforms</span><span class="p">.</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
+        <span class="n">transforms</span><span class="p">.</span><span class="n">RandomHorizontalFlip</span><span class="p">(),</span>
+        <span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+        <span class="n">transforms</span><span class="p">.</span><span class="n">Normalize</span><span class="p">([</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
+    <span class="p">]),</span>
+    <span class="s">'val'</span><span class="p">:</span> <span class="n">transforms</span><span class="p">.</span><span class="n">Compose</span><span class="p">([</span>
+        <span class="n">transforms</span><span class="p">.</span><span class="n">Resize</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+        <span class="n">transforms</span><span class="p">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
+        <span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+        <span class="n">transforms</span><span class="p">.</span><span class="n">Normalize</span><span class="p">([</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
+    <span class="p">]),</span>
+<span class="p">}</span>
+
+<span class="n">data_dir</span> <span class="o">=</span> <span class="s">'data/hymenoptera_data'</span>
+<span class="n">image_datasets</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">datasets</span><span class="p">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span>
+                                          <span class="n">data_transforms</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+                  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'train'</span><span class="p">,</span> <span class="s">'val'</span><span class="p">]}</span>
+<span class="n">dataloaders</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">image_datasets</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                                             <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+              <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'train'</span><span class="p">,</span> <span class="s">'val'</span><span class="p">]}</span>
+<span class="n">dataset_sizes</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_datasets</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'train'</span><span class="p">,</span> <span class="s">'val'</span><span class="p">]}</span>
+<span class="n">class_names</span> <span class="o">=</span> <span class="n">image_datasets</span><span class="p">[</span><span class="s">'train'</span><span class="p">].</span><span class="n">classes</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda:0"</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">"cpu"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>일부 이미지 시각화</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="s">"""Imshow for Tensor."""</span>
+    <span class="n">inp</span> <span class="o">=</span> <span class="n">inp</span><span class="p">.</span><span class="n">numpy</span><span class="p">().</span><span class="n">transpose</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">])</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
+    <span class="n">inp</span> <span class="o">=</span> <span class="n">std</span> <span class="o">*</span> <span class="n">inp</span> <span class="o">+</span> <span class="n">mean</span>
+    <span class="n">inp</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">clip</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>  <span class="c1">#update를 기다림
+</span>
+<span class="c1"># 학습 데이터의 배치를 얻음
+</span><span class="n">inputs</span><span class="p">,</span> <span class="n">classes</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dataloaders</span><span class="p">[</span><span class="s">'train'</span><span class="p">]))</span>
+
+<span class="c1"># 배치로부터 격자 형태의 이미지를 만들어냄
+</span><span class="n">out</span> <span class="o">=</span> <span class="n">torchvision</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">make_grid</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="n">class_names</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/142787891-cc40f2fd-10af-47f5-ab73-891bd6423421.png" alt="image"></p>
+
+<p>model train; learning rate와 scheduling, 최적의 model을 구하는 과정</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">scheduler</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">25</span><span class="p">):</span>
+    <span class="n">since</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="n">best_model_wts</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">state_dict</span><span class="p">())</span>
+    <span class="n">best_acc</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Epoch {}/{}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">num_epochs</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'-'</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+        <span class="c1"># 각 epoch은 학습 단계와 검증 단계를 거침
+</span>        <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'train'</span><span class="p">,</span> <span class="s">'val'</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">phase</span> <span class="o">==</span> <span class="s">'train'</span><span class="p">:</span>
+                <span class="n">model</span><span class="p">.</span><span class="n">train</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">model</span><span class="p">.</span><span class="nb">eval</span><span class="p">()</span>
+
+            <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">running_corrects</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">for</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">dataloaders</span><span class="p">[</span><span class="n">phase</span><span class="p">]:</span>
+                <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+                <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+                <span class="c1"># param gradient를 0으로 설정
+</span>                <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+                <span class="c1"># foward
+</span>                <span class="c1"># train phase에만 연산 기록을 추적
+</span>                <span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="n">phase</span> <span class="o">==</span> <span class="s">'train'</span><span class="p">):</span>
+                    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+                    <span class="n">_</span><span class="p">,</span> <span class="n">preds</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+                    <span class="c1"># train phase인 경우 backprop, optimize
+</span>                    <span class="k">if</span> <span class="n">phase</span> <span class="o">==</span> <span class="s">'train'</span><span class="p">:</span>
+                        <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+                        <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+
+                <span class="c1"># 통계
+</span>                <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="p">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">running_corrects</span> <span class="o">+=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">preds</span> <span class="o">==</span> <span class="n">labels</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">phase</span> <span class="o">==</span> <span class="s">'train'</span><span class="p">:</span>
+                <span class="n">scheduler</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+
+            <span class="n">epoch_loss</span> <span class="o">=</span> <span class="n">running_loss</span> <span class="o">/</span> <span class="n">dataset_sizes</span><span class="p">[</span><span class="n">phase</span><span class="p">]</span>
+            <span class="n">epoch_acc</span> <span class="o">=</span> <span class="n">running_corrects</span><span class="p">.</span><span class="n">double</span><span class="p">()</span> <span class="o">/</span> <span class="n">dataset_sizes</span><span class="p">[</span><span class="n">phase</span><span class="p">]</span>
+
+            <span class="k">print</span><span class="p">(</span><span class="s">'{} Loss: {:.4f} Acc: {:.4f}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
+                <span class="n">phase</span><span class="p">,</span> <span class="n">epoch_loss</span><span class="p">,</span> <span class="n">epoch_acc</span><span class="p">))</span>
+
+            <span class="c1"># 모델 deep copy
+</span>            <span class="k">if</span> <span class="n">phase</span> <span class="o">==</span> <span class="s">'val'</span> <span class="ow">and</span> <span class="n">epoch_acc</span> <span class="o">&gt;</span> <span class="n">best_acc</span><span class="p">:</span>
+                <span class="n">best_acc</span> <span class="o">=</span> <span class="n">epoch_acc</span>
+                <span class="n">best_model_wts</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">state_dict</span><span class="p">())</span>
+
+        <span class="k">print</span><span class="p">()</span>
+
+    <span class="n">time_elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">since</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Training complete in {:.0f}m {:.0f}s'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
+        <span class="n">time_elapsed</span> <span class="o">//</span> <span class="mi">60</span><span class="p">,</span> <span class="n">time_elapsed</span> <span class="o">%</span> <span class="mi">60</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Best val Acc: {:4f}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">best_acc</span><span class="p">))</span>
+
+    <span class="c1"># 가장 나은 모델 weight를 불러옴
+</span>    <span class="n">model</span><span class="p">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">best_model_wts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">visualize_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">num_images</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
+    <span class="n">was_training</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">training</span>
+    <span class="n">model</span><span class="p">.</span><span class="nb">eval</span><span class="p">()</span>
+    <span class="n">images_so_far</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dataloaders</span><span class="p">[</span><span class="s">'val'</span><span class="p">]):</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">preds</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">inputs</span><span class="p">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="n">images_so_far</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">num_images</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">images_so_far</span><span class="p">)</span>
+                <span class="n">ax</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>
+                <span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'predicted: {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">class_names</span><span class="p">[</span><span class="n">preds</span><span class="p">[</span><span class="n">j</span><span class="p">]]))</span>
+                <span class="n">imshow</span><span class="p">(</span><span class="n">inputs</span><span class="p">.</span><span class="n">cpu</span><span class="p">().</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="n">images_so_far</span> <span class="o">==</span> <span class="n">num_images</span><span class="p">:</span>
+                    <span class="n">model</span><span class="p">.</span><span class="n">train</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">was_training</span><span class="p">)</span>
+                    <span class="k">return</span>
+        <span class="n">model</span><span class="p">.</span><span class="n">train</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">was_training</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>finetuning; 미리 train한 model을 불러오고 마지막 FC layer를 초기화 함</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model_ft</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">resnet18</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">num_ftrs</span> <span class="o">=</span> <span class="n">model_ft</span><span class="p">.</span><span class="n">fc</span><span class="p">.</span><span class="n">in_features</span>
+<span class="c1"># 각 출력 샘플의 크기는 2
+# 또는, nn.Linear(num_ftrs, len (class_names))로 generalize
+</span><span class="n">model_ft</span><span class="p">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_ftrs</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">model_ft</span> <span class="o">=</span> <span class="n">model_ft</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+<span class="c1"># optimize가 잘 되었는지 확인
+</span><span class="n">optimizer_ft</span> <span class="o">=</span> <span class="n">optim</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model_ft</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># 7 epoch마다 0.1씩 lr 감소
+</span><span class="n">exp_lr_scheduler</span> <span class="o">=</span> <span class="n">lr_scheduler</span><span class="p">.</span><span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer_ft</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>train &amp; validation 과정을 거침</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model_ft</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">model_ft</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer_ft</span><span class="p">,</span> <span class="n">exp_lr_scheduler</span><span class="p">,</span>
+                       <span class="n">num_epochs</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">위</span> <span class="n">셀의</span> <span class="n">출력</span> <span class="n">결과</span><span class="p">)</span>
+
+<span class="n">Epoch</span> <span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5960</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.6598</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2069</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9216</span>
+
+<span class="n">Epoch</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4832</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8238</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4045</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8562</span>
+
+<span class="n">Epoch</span> <span class="mi">2</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.7341</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7787</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3405</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8497</span>
+
+<span class="n">Epoch</span> <span class="mi">3</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4445</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8238</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.7291</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7647</span>
+
+<span class="n">Epoch</span> <span class="mi">4</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4463</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8197</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3453</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8693</span>
+
+<span class="n">Epoch</span> <span class="mi">5</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4851</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8033</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3764</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8562</span>
+
+<span class="n">Epoch</span> <span class="mi">6</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3701</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8443</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2430</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
+
+<span class="n">Epoch</span> <span class="mi">7</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3545</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8525</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2691</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+
+<span class="n">Epoch</span> <span class="mi">8</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3670</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8484</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2494</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+
+<span class="n">Epoch</span> <span class="mi">9</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3110</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8770</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2704</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
+
+<span class="n">Epoch</span> <span class="mi">10</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3862</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8279</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2526</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+
+<span class="n">Epoch</span> <span class="mi">11</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2445</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9016</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2312</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">12</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1822</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9180</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2516</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+
+<span class="n">Epoch</span> <span class="mi">13</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2778</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8689</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2712</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+
+<span class="n">Epoch</span> <span class="mi">14</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3723</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8566</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2308</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+
+<span class="n">Epoch</span> <span class="mi">15</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2530</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8975</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2270</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">16</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2656</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8852</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2254</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+
+<span class="n">Epoch</span> <span class="mi">17</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2753</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8689</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2250</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+
+<span class="n">Epoch</span> <span class="mi">18</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2366</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8934</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2211</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+
+<span class="n">Epoch</span> <span class="mi">19</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2573</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9016</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2392</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+
+<span class="n">Epoch</span> <span class="mi">20</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2666</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8934</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2681</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+
+<span class="n">Epoch</span> <span class="mi">21</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2915</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8730</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2282</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+
+<span class="n">Epoch</span> <span class="mi">22</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3191</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8730</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2266</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+
+<span class="n">Epoch</span> <span class="mi">23</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2335</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9180</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2358</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9216</span>
+
+<span class="n">Epoch</span> <span class="mi">24</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2557</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8975</span>
+<span class="n">Best</span> <span class="n">val</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.941176</span>
+
+<span class="n">Training</span> <span class="n">complete</span> <span class="ow">in</span> <span class="mi">38</span><span class="n">m</span> <span class="mi">6</span><span class="n">s</span>
+<span class="n">Best</span> <span class="n">val</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.941176</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">visualize_model</span><span class="p">(</span><span class="n">model_ft</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/142787994-78f86ed3-f738-4c93-89b2-69bbbd78ea29.png" alt="image"></p>
+
+<p>fixed feature extractor로의 ConvNet; 마지막 layer를 제외한 network의 모든 부분을 고정해야 함 → gradient가 개선되지 않게 해야 함</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model_conv</span> <span class="o">=</span> <span class="n">torchvision</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">resnet18</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model_conv</span><span class="p">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="n">param</span><span class="p">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="c1"># 새로 생성된 module의 param은 기본값이 requires_grad=True 임
+</span><span class="n">num_ftrs</span> <span class="o">=</span> <span class="n">model_conv</span><span class="p">.</span><span class="n">fc</span><span class="p">.</span><span class="n">in_features</span>
+<span class="n">model_conv</span><span class="p">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_ftrs</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">model_conv</span> <span class="o">=</span> <span class="n">model_conv</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+<span class="c1"># 마지막 layer의 param만 optimize되는지 관찰
+</span><span class="n">optimizer_conv</span> <span class="o">=</span> <span class="n">optim</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model_conv</span><span class="p">.</span><span class="n">fc</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># 7 epoch마다 0.1씩 lr 감소
+</span><span class="n">exp_lr_scheduler</span> <span class="o">=</span> <span class="n">lr_scheduler</span><span class="p">.</span><span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer_conv</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>train &amp; validation</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model_conv</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">model_conv</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer_conv</span><span class="p">,</span>
+                         <span class="n">exp_lr_scheduler</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">위</span> <span class="n">셀의</span> <span class="n">출력</span> <span class="n">결과</span><span class="p">)</span>
+
+<span class="n">Epoch</span> <span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6219</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.6598</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2126</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4968</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8033</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6978</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7386</span>
+
+<span class="n">Epoch</span> <span class="mi">2</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4983</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7787</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2257</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9216</span>
+
+<span class="n">Epoch</span> <span class="mi">3</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4159</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7992</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1433</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9608</span>
+
+<span class="n">Epoch</span> <span class="mi">4</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5809</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7377</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2826</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+
+<span class="n">Epoch</span> <span class="mi">5</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4401</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7992</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3082</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9020</span>
+
+<span class="n">Epoch</span> <span class="mi">6</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4745</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8238</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1633</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
+
+<span class="n">Epoch</span> <span class="mi">7</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4063</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8115</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1737</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">8</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2742</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8730</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1731</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+
+<span class="n">Epoch</span> <span class="mi">9</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3372</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8484</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1859</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">10</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3019</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8770</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1747</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">11</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4174</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8115</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1868</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">12</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4530</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7787</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1920</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">13</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3872</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8361</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1804</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">14</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3734</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8156</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1729</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
+
+<span class="n">Epoch</span> <span class="mi">15</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3502</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8648</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1704</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">16</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3155</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8525</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1733</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9542</span>
+
+<span class="n">Epoch</span> <span class="mi">17</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2872</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8770</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1858</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+
+<span class="n">Epoch</span> <span class="mi">18</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3458</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8566</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1786</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">19</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3505</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8238</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1909</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+
+<span class="n">Epoch</span> <span class="mi">20</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3825</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8484</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1811</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">21</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3403</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8525</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1634</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">22</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3075</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8525</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1831</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">23</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2734</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8893</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1841</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+
+<span class="n">Epoch</span> <span class="mi">24</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">----------</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3340</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8525</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1865</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+
+<span class="n">Training</span> <span class="n">complete</span> <span class="ow">in</span> <span class="mi">18</span><span class="n">m</span> <span class="mi">50</span><span class="n">s</span>
+<span class="n">Best</span> <span class="n">val</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.960784</span>
+
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">visualize_model</span><span class="p">(</span><span class="n">model_conv</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">ioff</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/142788014-a6138804-53c1-4c94-b57f-8c5b2c2575d2.png" alt="image"></p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/pytorch/2021/11/18/pytorch-tutorial(1).html" title="Pytorch Tutorial (1)">Pytorch Tutorial (1)</a><a class="next" href="/jekyll-theme-yat/flutter/2021/12/01/Flutter-Study-Week1.html" title="Flutter Study Week1">Flutter Study Week1</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/os/2022/11/11/OS-Study-Week2-1.html" title="Flutter Study Week1">2-1. System Structure &amp; Program Execution 1</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/database/2022/03/27/Database-Study-Week2.html" title="Flutter Study Week1">Database Study Week2</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/flutter/2021/12/15/Flutter-Study-Week3.html" title="Flutter Study Week1">Flutter Study Week3</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/cs231n/2021/05/03/cs231n-Lec6.html" title="Flutter Study Week1">cs231n Lec6</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --></section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2023 kji-dec</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

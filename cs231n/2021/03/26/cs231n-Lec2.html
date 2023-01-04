@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>cs231n Lec2 | Jingnii Develop</title>
+<meta name="generator" content="Jekyll v4.3.1">
+<meta property="og:title" content="cs231n Lec2">
+<meta name="author" content="kji-dec">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="cs231n 강의">
+<meta property="og:description" content="cs231n 강의">
+<link rel="canonical" href="/jekyll-theme-yat/cs231n/2021/03/26/cs231n-Lec2.html">
+<meta property="og:url" content="/jekyll-theme-yat/cs231n/2021/03/26/cs231n-Lec2.html">
+<meta property="og:site_name" content="Jingnii Develop">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-03-26T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="cs231n Lec2">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kji-dec"},"dateModified":"2021-03-26T00:00:00+00:00","datePublished":"2021-03-26T00:00:00+00:00","description":"cs231n 강의","headline":"cs231n Lec2","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/cs231n/2021/03/26/cs231n-Lec2.html"},"url":"/jekyll-theme-yat/cs231n/2021/03/26/cs231n-Lec2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="Jingnii Develop">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="Jingnii Develop" src="" onerror="this.style.display='none'">
+  Jingnii Develop
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">cs231n Lec2</h1>
+  <h2 class="post-subtitle">Image Classification pipeline</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2021-03-26T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Mar 26, 2021
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 8 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CV">#CV</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#cs231n">#cs231n</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><a href="https://youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv">cs231n 강의</a></p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148770487-23834b41-21ba-425a-8fae-5bd5e9f37256.png" alt="image"></p>
+
+<p>(해당 강의에서 사용한 dataset: CIFAR10)</p>
+
+<h3 id="image-classification-a-core-task-in-computer-vision">Image Classification: A core task in Computer Vision</h3>
+
+<p>간단한 작동 방식: input image -&gt; 고정된 category label 중 하나를 할당</p>
+
+<p>인간은 시각을 통해 사고할 수 있기에 이미지를 구분하는 것은 쉬운 문제이지만 기계에게는 결코 쉬운 문제가 아님.</p>
+
+<p>Problem</p>
+
+<ul>
+  <li>Semantic Gap: 이미지 내의 개체의 의미와 컴퓨터가 실제로 인식하는 픽셀 값 사이의 큰 차이(에서 발생하는 문제). 예를 들어, 머신은 고양이 이미지의 전체적인 모습을 인식하지 못하고 [0, 255] 사이의 숫자 격자들로 이미지를 인식함.</li>
+</ul>
+
+<p>아래는 Semantic Gap으로 인해 발생하는 Challenges</p>
+
+<ol>
+  <li>Viewpoint variation: 다른 시각에서의 동일한 개체를 찍은 사진이더라도 다른 이미지라고 인식함. 즉, 동일한 것을 담은 이미지라도 픽셀값이 다르면 같은 이미지라는 것을 머신은 인식하지 못함. 예를 들어, 고양이 사진을 찍었을 때, 어떠한 변동도 없는 같은 고양이를 다른 시점에서 찍었을 때 픽셀값이 완전히 바뀌기 때문에 머신은 동일한 고양이임을 인지할 수 없음.</li>
+  <li>Illumination: 밝기, 빛이 개체를 비추는 위치에 따라 이미지가 달라짐.</li>
+  <li>Deformation: 같은 class여도 개체에 따라서 이미지가 달라짐. 여러 종류의 고양이, 여러 모습을 한 고양이들이 있을 테고, 다양한 포즈를 취하는 고양이들이 있을 텐데, 이들을 인식할 수 있는 알고리즘을 만들어내야 함.</li>
+  <li>Occlusion: 인식하려는 타깃이 다른 어떠한 것에 의해 일부가 가려지거나 일부만 노출될 수도 있음. 고양이의 일부만 보이더라도 인간은 쉽게 고양이임을 파악할 수 있는데, 알고리즘이 이를 커버할 수 있어야 함.</li>
+  <li>Background Clutter: 배경이 타깃과 잘 구분되지 않는 경우. 보호색처럼 고양이가 배경과 비슷한 색을 가지고 있더라도 이를 파악할 수 있게 해야함.</li>
+</ol>
+
+<p>Interclass variation: class 내의 다양성.</p>
+
+<p>가능한 알고리즘</p>
+
+<ul>
+  <li>이미지의 테두리를 계산하여 corner, boundary를 찾은 후 명시적인 규칙을 통해 해당 이미지가 나타내는 것을 알 수 있음.</li>
+</ul>
+
+<p>-&gt; BUT, it’s super brittle. 또, 다른 카테고리를 다룰 때마다 새롭게 위의 방식을 다시 실시해야함.</p>
+
+<ul>
+  <li>Data-Driven Approach</li>
+</ul>
+
+<ol>
+  <li>Collect a dataset of images and labels</li>
+  <li>Use Machine Learning to train a classifier</li>
+  <li>Evaluate the classifier on new images</li>
+</ol>
+
+<p>아래는 Data-Driven Approach의 함수 구성</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="c1"># Machine Learning!
+</span>    <span class="k">return</span> <span class="n">model</span>
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_images</span><span class="p">):</span>
+    <span class="c1">#Use model to predict labels
+</span>    <span class="k">return</span> <span class="n">test_labels</span>
+</code></pre></div></div>
+
+<p>First classifier: <strong>Nearest Neighbor</strong></p>
+
+<p>⁣1. train: input images and labels, and then output a model (Memorize all data and labels)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="c1"># Machine Learning!
+</span>    <span class="k">return</span> <span class="n">model</span>
+</code></pre></div></div>
+
+<p>2.predict: input model and then make predictions for images (Predict the label of the most similar training image)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_images</span><span class="p">):</span>
+    <span class="c1">#Use model to predict labels
+</span>    <span class="k">return</span> <span class="n">test_labels</span>
+</code></pre></div></div>
+
+<hr>
+
+<p><strong>Distance Metric</strong> to compare images</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148770729-92b2d8ca-a570-4b80-97f0-900d36b58440.png" alt="image"></p>
+
+<ul>
+  <li>L1 distance(=Manhattan distance): 각 이미지의 픽셀 간의 차이를 기준으로 함.</li>
+  <li>예측 방식: test data를 입력 받으면 각 데이터 하나에 대한 모든 training data와의 L1 distance를 구하고 이 값이 가장 작은 사진을 정답 이미지로 선택할 것.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">class</span> <span class="nc">NearestNeighbor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="s">""" X is N x D where each row is an example. Y is 1-dimension of size N """</span>
+    <span class="c1"># the nearest neighbor classifier simply remembers all the training data
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">Xtr</span> <span class="o">=</span> <span class="n">X</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">ytr</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+    <span class="s">""" X is N x D where each row is an example we wish to predict label for """</span>
+    <span class="n">num_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># lets make sure that the output type matches the input type
+</span>    <span class="n">Ypred</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_test</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">ytr</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="c1">#loop over all test rows
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_test</span><span class="p">):</span>
+        <span class="c1"># find the nearest training image to the i'th test image
+</span>        <span class="c1"># using the L1 distance (sum of absolute value differences)
+</span>        <span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">Xtr</span> <span class="o">-</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,:]),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">min_index</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span> <span class="c1"># get the index with smallest distance
+</span>        <span class="n">Ypred</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">ytr</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span> <span class="c1"># predict the label of the nearest example
+</span>
+    <span class="k">return</span> <span class="n">Ypred</span>
+<span class="c1">#(해당 코드는 Numpy가 제공하는 벡터화된 연산을 많이 이용했기 때문에 짧고 간결함)
+</span></code></pre></div></div>
+
+<ul>
+  <li>train: Memorize training data</li>
+  <li>predict 안의 for loop: For each test image, find closest train image, predict label of nearest image</li>
+  <li>N examples를 가지고 할 때 빠르기는 Train은 O(1), Predict는 O(N)임.</li>
+  <li>이 방식은 좋은 방식이 아님. -&gt; training에서 느리더라도 predict에서 빠른 classifier를 원함</li>
+</ul>
+
+<p>K-Nearest Neighbors: 데이터로부터 거리가 가까운 ‘k’개의 다른 데이터의 레이블을 참조하여 분류하는 알고리즘(k가 크다고 무조건 좋은 것은 아님)</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148770786-f2108322-ca69-494c-9761-9a413f677996.png" alt="image"></p>
+
+<p>KNN을 예시 데이터셋에 적용한 결과</p>
+
+<p>K=10으로 했고, 왼쪽은 test data, 오른쪽은 predict 결과. 초록색은 정답, 빨간색은 오답. 오답의 개수가 정답보다 많음을 알 수 있음. KNN은 그리 좋은 알고리즘은 아님.</p>
+
+<p>그럼에도 L2 distance를 이용한 KNN을 살펴보겠다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148770847-1086cbeb-e168-4982-86f6-24f47384d489.png" alt="image"></p>
+
+<ul>
+  <li>L2 distance(=Euclidean distance)</li>
+  <li>L1 distance는 L2 distance보다 입력 데이터 모양에 더 큰 영향을 받음.</li>
+  <li>input data의 feature가 중요한 의미를 가질 때에는 L1 distance, general한 결과를 얻고 싶을 때에는 L2를 사용하는 것을 권장. 그래도 둘 다 직접 시도해보고 더 나은 방식을 선택하는 것이 가장 좋음.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148770886-f686cb8a-4ee0-45ad-ba61-26d012c1cbba.png" alt="image"></p>
+
+<p>각각을 적용한 결과</p>
+
+<ul>
+  <li>L1의 경우, decision boundary가 좌표축을 따라가는 모습을 보임. (좌표계에 종속적이기 때문)</li>
+  <li>L2의 경우, 좌표계에 큰 영향을 받지 않음.</li>
+</ul>
+
+<dl>
+  <dt><strong>Hyperparameters</strong></dt>
+  <dd>
+    <p>적합한 K값과 metric을 판단하는 문제</p>
+  </dd>
+</dl>
+
+<ul>
+  <li>problem-dependent하므로 최적의 하이퍼파라미터는 문제마다 천차만별</li>
+</ul>
+
+<p>하이퍼파라미터를 결정하는 방법</p>
+
+<p>1.가진 training dataset에 가장 좋은 결과를 보여주는 파라미터를 선택</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148770925-51d3e838-98a8-4be0-bc12-eca72a415bf3.png" alt="image"></p>
+
+<p>머신을 training data에 overfitting하게 만들면 오히려 새로운 데이터를 보게 했을 때 좋은 결과를 내놓지 않을 수도 있음. 정말 안 좋은 아이디어이므로 사용해서는 안됨.</p>
+
+<p>2.가진 data를 train set, test set으로 나누고 test set에 대해서 가장 좋은 성능을 보여주는 파라미터 선택</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148770962-7a957cdb-e03d-43c8-b952-704e386f12b3.png" alt="image"></p>
+
+<p>idea #1을 개선한 것처럼 보이지만 사실상 같은 결과를 불러일으킴. (test data에 overfitting)</p>
+
+<ol>
+  <li>train, validation, test set으로 나눔. validation set으로 하이퍼파리미터를 결정하고 이를 test에서 평가</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148771092-50628531-cb68-4826-972f-6f333cb21244.png" alt="image"></p>
+
+<p>완벽한 방법은 아니나 위의 두 방식보다 괜찮음. validation set을 이용해 하이퍼파라미터를 조절하고 이 결과를 test set에서 평가하는 것. test set은 평가 시 딱 한 번만 사용해야함.</p>
+
+<ul>
+  <li>training과 validation의 차이: training에서는 알고리즘이 label을 볼 수 있음. validation에서는 label에 바로 접근할 수 없고, 알고리즘이 잘 작동하는지 확인할 때 접근할 수 있음.</li>
+</ul>
+
+<ol>
+  <li>training set을 여러개의 fold로 나누고 각 fold가 돌아가면서 validation set 역할을 함. 이를 통해 나온 결과들의 평균을 이용해 좋은 파라미터를 찾아가는 방식</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148771129-28ffe8b5-d704-4646-9420-83accf84c8cd.png" alt="image"></p>
+
+<p>이 방식은 data set의 크기가 작을 때 유용하게 쓰임. (적은 data에도 불구하고 generalize하게 적용될 수 있는 파라미터를 찾기 위한 방식) 따라서 딥러닝에는 그리 많이 쓰이지 않음.</p>
+
+<p><strong>BUT</strong> KNN 알고리즘은 image classification 분야에서 절대 쓰이지 않음.</p>
+
+<ul>
+  <li>prediction이 매우 느림.</li>
+  <li>픽셀 간의 차가 이미지의 유사성/차이를 잘 나타내지 못함.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148771181-a1330212-19b6-4b5f-a330-9a5714e42ef9.png" alt="image"></p>
+
+<ul>
+  <li>Curse of dimensionality: 알고리즘이 잘 동작하도록 만들기 위해서는 우리가 다룰 data의 차원제곱만큼의 학습데이터가 필요함.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148771222-4f6f899c-0f26-4454-968c-c269584af873.png" alt="image"></p>
+
+<dl>
+  <dt><strong>Linear Classification</strong></dt>
+  <dd>
+    <p>Neural Network의 기본이 되는 구조 중 하나</p>
+  </dd>
+</dl>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148771251-098f44f8-0dd3-45f4-9d82-d9c14bad4c5b.png" alt="image"></p>
+
+<p>x: 입력 데이터</p>
+
+<p>W: 파라미터/weight -&gt; 각 class의 classifier를 학습</p>
+
+<p>b: bias (output과 같은 모양을 갖는 상수) -&gt; 한번도 보지 못한 데이터를 분류할 수 있도록 도와주는 수.</p>
+
+<p>CIFAR10의 카테고리 수가 10개이므로 10개의 숫자를 결과로 받을 수 있어야 함. 여기서 행렬의 곱셈을 사용함.</p>
+
+<p>CIFAR10의 이미지 사이즈는 [32x32x3]임. 이를 한 줄로 펴면 [3072x1]의 행렬을 얻을 수 있음. 여기서 내적을 이용해 x와 W를 곱해야 함. 이 때 output이 [10x1]이어야 하므로 Wx 순서로 곱해줘야 함.</p>
+
+<p>[10x3072] * [3072x1] = [10x1]</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148771289-3a628382-f689-4a17-b23d-9fc517144837.png" alt="image"></p>
+
+<p>해당 슬라이드를 보면 Dog score가 높으므로 dog라고 예측이됨. (넣은 이미지는 고양이임. 따라서 잘못된 판단을 한 것.) 따라서 이를 개선시키기 위해 W의 값을 개선시켜나가야 함. 아래의 사진은 linear classifier의 예시임.</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148771348-a77a3c9e-6283-4c7e-8d46-7447a61e8d53.png" alt="image"></p>
+
+<p>다음은 linear classifier가 잘 동작하지 않는 dataset임</p>
+
+<p><img src="https://user-images.githubusercontent.com/71377968/148771380-55c292b2-a84c-4bfe-8e74-5dc08bdbb6c6.png" alt="image"></p>
+
+<ol>
+  <li>사분면의 반대 위치에 decision boundary가 있는 경우</li>
+  <li>원형의 decision boundary가 있는 경우</li>
+  <li>여러개의 독립적인 decision boundary가 있는 경우</li>
+</ol>
+
+<p>—&gt; 위의 세 경우 모두 하나의 선으로 두 class를 분류하는 것은 어려움</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/cs231n/2021/03/19/cs231n-Lec1.html" title="cs231n Lec1">cs231n Lec1</a><a class="next" href="/jekyll-theme-yat/cs231n/2021/04/02/cs231n-Lec3.html" title="cs231n Lec3">cs231n Lec3</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/os/2022/11/27/OS-Study-Week4.html" title="cs231n Lec3">4. Process Management 1, 2</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/dpa/2023/01/04/DPA-day2.html" title="cs231n Lec3">DPA 2일차</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/cs231n/2021/04/09/cs231n-Lec4.html" title="cs231n Lec3">cs231n Lec4</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/os/2022/11/11/OS-Study-Week2-2.html" title="cs231n Lec3">2-2. System Structure &amp; Program Execution 2</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --></section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2023 kji-dec</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
